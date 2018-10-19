@@ -1,13 +1,20 @@
 from ev3dev.ev3 import *
-from time   import sleep
-m = LargeMotor('outA')
 
-m.run_forever(speed_sp=200)   # equivalent to power=20 in EV3-G
-sleep(5)
-m.stop(stop_action="coast")
-sleep(4)
+cl=ColorSensor('Inp1')
+on_dark=true
+on_light=true
 
-m.run_forever()
-sleep(5)
-m.stop()
-sleep(4)
+cl.mode='COL-REFLECT'
+while(true):
+    left_motor=LargeMotor('OutB')
+    right_motor=LargeMotor('OutA')
+    on_light=cl.value>40
+    on_dark=cl.value<60
+
+    if(on_dark):
+        left_motor.run_timed(time_sp=200, speed_sp=900, stop_action='brake')
+    if(on_light):
+        right_motor.run_timed(time_sp=200, speed_sp=900, stop_action='brake')
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
+    sleep(0.2)
