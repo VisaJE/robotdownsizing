@@ -12,7 +12,7 @@ while(True):
 
     on_light=cl.value()>40
     on_dark=cl.value()<60
-
+    print("cl " + str(cl.value()) + " " + str(on_light) + " "+str(on_dark))
     if(on_dark):
         left_motor.run_timed(time_sp=200, speed_sp=900, stop_action='brake')
         print("vasen")
