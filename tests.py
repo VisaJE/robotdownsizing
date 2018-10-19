@@ -6,12 +6,11 @@ from time   import sleep
 
 # Connect EV3 color and touch sensors to any sensor ports
 cl = ColorSensor() 
-ts = TouchSensor()
 
 # Put the color sensor into RGB mode.
 cl.mode='RGB-RAW'
 
-while not ts.value():    # Stop program by pressing touch sensor button
+while True:    # Stop program by pressing touch sensor button
     red = cl.value(0)
     green=cl.value(1)
     blue=cl.value(2)
