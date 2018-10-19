@@ -5,8 +5,8 @@ on_dark=True
 on_light=True
 
 cl.mode='COL-REFLECT'
-left_motor=LargeMotor('OutB')
-right_motor=LargeMotor('OutA')
+left_motor=LargeMotor('outB')
+right_motor=LargeMotor('outA')
 while(True):
 
     on_light=cl.value()>40
