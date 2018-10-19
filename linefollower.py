@@ -14,10 +14,10 @@ while(True):
     on_dark=cl.value()<60
     print("cl " + str(cl.value()) + " " + str(on_light) + " "+str(on_dark))
     if(on_dark):
-        left_motor.run_timed(time_sp=200, speed_sp=900, stop_action='brake')
+        left_motor.run_timed(time_sp=200, speed_sp=-300, stop_action='brake')
         print("vasen")
     if(on_light):
-        right_motor.run_timed(time_sp=200, speed_sp=900, stop_action='brake')
+        right_motor.run_timed(time_sp=200, speed_sp=-300, stop_action='brake')
         print("oikea")
     print("kierros")
-    sleep(0.2)
+    sleep(0.3)
