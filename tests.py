@@ -1,11 +1,20 @@
+#!/usr/bin/env python3
+# so that script can be run from Brickman
+
 from ev3dev.ev3 import *
 from time   import sleep
 
-cl=ColorSensor()
+# Connect EV3 color and touch sensors to any sensor ports
+cl = ColorSensor() 
+ts = TouchSensor()
 
-cl.mode='COL-COLOR'
-colors=('unknown','black','blue','green','yellow','red','white','brown')
-while True:    # Stop program by pressing touch sensor button
-    print(colors[cl.value()])
-    #Sound.speak(colors[cl.value()]).wait()
+# Put the color sensor into RGB mode.
+cl.mode='RGB-RAW'
+
+while not ts.value():    # Stop program by pressing touch sensor button
+    red = cl.value(0)
+    green=cl.value(1)
+    blue=cl.value(2)
+    print(" " + str(red) + ", " + str(green) + ", " + str(blue))
     sleep(0.5)
+Sound.beep()
