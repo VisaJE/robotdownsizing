@@ -1,6 +1,6 @@
 from ev3dev.ev3 import *
 from time   import sleep
-m = LargeMotor('outB')
+m = LargeMotor('outA')
 
 m.run_forever(speed_sp=200)   # equivalent to power=20 in EV3-G
 sleep(5)
