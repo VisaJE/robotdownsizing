@@ -14,14 +14,15 @@ us = UltrasonicSensor()
 us.mode='US-DIST-CM'
 state = 0
 while True:
+	print("statte " + str(state))
 	print(cs.getColorFUCK()[0])
 	distance = us.value()
 	print("dist " + str(distance))
 	if tsr.value():
-		state = 
+		state = 1
 	if cs.getColorFUCK()[0] == 'changeRed':
 		state = 3
-	if state > 3 && cs.getColorFUCK()[0] == 'ground':
+	if state > 3 and cs.getColorFUCK()[0] == 'ground':
 		print("DONE")
 		quit()
 	if state == 0:
@@ -33,7 +34,7 @@ while True:
 		state = 2
 	if state == 2:
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
-		state = 2
+		state = 3
 	if state == 3:
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
 		state = 4
