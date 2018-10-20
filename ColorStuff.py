@@ -47,7 +47,7 @@ class ColorStuff:
         trimLeft = range(n).map(lambda a: getDistance(trimLeft[a], trimRight[a]))
         trimLeft[0] = 0
         trimLeft[n-1] = 0
-        found = max(zip(trimLeft, range(n)), key= lamda a: a[0])
+        found = max(zip(trimLeft, range(n)), key= lambda a: a[0])
         print("Found biggest difference in avr color at index {}\n".format(found))
         if trimLeft[found] > differenceThreshold:
             knownColors[name] = trimRight[found]
