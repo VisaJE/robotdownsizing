@@ -36,7 +36,7 @@ class Pylvas_solver:
             self.bumped_left=True
             print("moi")
             return False
-        if bump_r:
+        elif bump_r:
             self.bumped_right=True
             return False
         self.position=self.preferred[self.stage]
