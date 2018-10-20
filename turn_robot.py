@@ -6,11 +6,9 @@ def turn_left(left_motor,right_motor,degrees=90, flag=1): # flag=1 turns left, -
     right_motor.run_timed(speed_sp=flag*-200,time_sp=60+degrees*540/45,stop_action='brake')
     return
 
-
 def turn_right(left_motor,right_motor,degrees=90):
     turn_left(left_motor, right_motor, degrees, -1)
     return
-
 
 def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500):
     c = 50

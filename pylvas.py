@@ -53,7 +53,7 @@ class Pylvas_solver:
 
     def find_orientation(self):
         if self.position[0]-self.preferred[self.stage][0]==0:
-            tmp_or=math.Pi/2
+            tmp_or=math.pi/2
         else:
             tmp_or=math.atan((self.position[1]-self.preferred[self.stage][1])/(self.position[0]-self.preferred[self.stage][0]))
         indegs=self.orientation-tmp_or/2/math.pi*360
