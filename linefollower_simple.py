@@ -1,6 +1,7 @@
 from ev3dev.ev3 import *
 from time   import sleep
 from functools import reduce
+
 cl=ColorSensor()
 on_dark=True
 on_light=True
@@ -25,18 +26,20 @@ while(True):
         #turn right
         left_motor.run_timed(time_sp=100, speed_sp=-300, stop_action='brake')
         right.run_timed(time_sp=100, speed_sp=300, stop_action='brake')
-    else if (reduce((lambda x,y: x and y),last_darks)):
+        print("käänny oikealle")
+    else if (reduce((lambda x,y: x and y), map((lambda x: not x), last_darks))):
         #turn left
         right_motor.run_timed(time_sp=100, speed_sp=-300, stop_action='brake')
         left_motor.run_timed(time_sp=100, speed_sp=300, stop_action='brake')
+        print("käänny vasemmalle")
     else if(on_dark):
         #move right
         left_motor.run_timed(time_sp=100, speed_sp=-300, stop_action='brake')
-        print("vasen")
+        print("liiku vasemmalle")
     else if(on_light):
         #move left
         right_motor.run_timed(time_sp=100, speed_sp=-300, stop_action='brake')
-        print("oikea")
+        print("liiku oikealle")
     
     if (len(last_darks) > 4):
         last_darks.pop(0)
