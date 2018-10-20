@@ -52,7 +52,7 @@ class Pylvas_solver:
         self.bumped_right=False
 
     def find_orientation(self):
-        if self.position[0]-self.preferred[self.stage][0]==0:{
+        if self.position[0]-self.preferred[self.stage][0]==0:
             tmp_or=math.Pi/2
         else:
             tmp_or=math.atan((self.position[1]-self.preferred[self.stage][1])/(self.position[0]-self.preferred[self.stage][0]))
