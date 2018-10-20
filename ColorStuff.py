@@ -11,7 +11,7 @@ class ColorStuff:
         self.RGBColor = namedtuple('RGBColor', 'r g b')
         self.knownColors = {'null': RGBColor(0, 0, 0), 'changeRed': RGBColor(190, 210, 270), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(160, 230, 210)}
         self.differenceThreshold = 40
-    
+
     # Returns tuple (seen color name, is the color within the threshold)
     def getColorFUCK(self):
         return self.getColor(self.getColorH())
@@ -31,9 +31,6 @@ class ColorStuff:
 
     def getClosestKnown(self, color1):
         dists = zip(self.knownColors.items(), map((lambda x: self.getDistance(color1, x[1]) ), self.knownColors.items() ))
-        for d in dists:
-            print(d)
-            print(len(dists))
         return min(dists, key=lambda t: t[1])
 
     def getColor(self, color):
