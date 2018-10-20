@@ -1,7 +1,7 @@
 import math
-from turn_robot.py import *
+from turn_robot import *
 from ev3dev.ev3 import *
-from pylvas.py import *
+from pylvas import *
 lm = LargeMotor('outB')
 rm = LargeMotor('outA')
 touch_sensor_right=TouchSensor('In2')

@@ -1,5 +1,5 @@
 import math
-from turn_robot.py import *
+from turn_robot import *
 from ev3dev.ev3 import *
 
 class Pylvas_solver:
