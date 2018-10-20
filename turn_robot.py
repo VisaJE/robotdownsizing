@@ -3,8 +3,8 @@ from time import sleep
 
 def turn_left(left_motor,right_motor,degrees=90, flag=1): # flag=1 turns left, -1 turns right
     time = 60+degrees*540/45
-    left_motor.run_timed(speed_sp=flag*200,time_sp=time,stop_action='brake')
-    right_motor.run_timed(speed_sp=flag*-200,time_sp=time,stop_action='brake')
+    left_motor.run_timed(speed_sp=flag*-200,time_sp=time,stop_action='brake')
+    right_motor.run_timed(speed_sp=flag*200,time_sp=time,stop_action='brake')
     sleep(time/1000)
     return
 
