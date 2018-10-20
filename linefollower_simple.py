@@ -1,6 +1,6 @@
 from ev3dev.ev3 import *
 from time   import sleep
-
+from functools import reduce
 cl=ColorSensor()
 on_dark=True
 on_light=True
