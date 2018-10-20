@@ -9,7 +9,7 @@ class ColorStuff:
         self.cl = ColorSensor()
         RGBColor = namedtuple('RGBColor', 'r g b')
         self.RGBColor = namedtuple('RGBColor', 'r g b')
-        self.knownColors = {'null': RGBColor(0, 0, 0), 'changeRed': RGBColor(190, 210, 270), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(160, 230, 210)}
+        self.knownColors = {'null': RGBColor(0, 0, 0), 'changeRed': RGBColor(125, 138, 193), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(134, 163, 175)}
         self.differenceThreshold = 40
 
     # Returns tuple (seen color name, is the color within the threshold)
