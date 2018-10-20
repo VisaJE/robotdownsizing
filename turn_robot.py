@@ -13,10 +13,11 @@ turn(left_motor,right_motor)
 
 
 
-def move(left_motor, right_motor, sensor, distance=10):
+def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10):
     c = 10
     mov = 0
-    while (sensor? and mov < distance):
+    epsilon = 0.1
+    while ((touch_sensor_left.is_pressed or touch_sensor_right.is_pressed) and mov < distance):
         if (mov + epsilon < distance):
             left_motor.run_timed(speed_sp=500, time_sp=c*epsilon, stop_action='brake')
             right_motor.run_timed(speed_sp=500, time_sp=c*epsilon, stop_action='brake')
