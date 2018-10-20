@@ -5,7 +5,7 @@ from ColorStuff import ColorStuff
 
 class Linefollower:
     
-    def __init__(self, cl, lm, rm, cs):
+    def __init__(self, cl, lm, rm):
         self.on_dark=True
         self.on_light=False
         #cl.mode='COL-REFLECT'
@@ -22,21 +22,16 @@ class Linefollower:
     
         if (self.line_following_on):
         
-            self.on_light = (cs.getColorFUCK()[0] == 'tape')
-            self.on_dark = (cs.getColorFUCK()[0] == 'ground')
-            
+            self.on_light = cl.value()>=40
+            self.on_dark = cl.value()<40
+            print(cl.value())
             if (self.on_light):
                 print("ON TAPE")
+                self.last_darks.append(False)
             elif (self.on_dark):
                 print("ON GROUND")
-            else:
-                print("Unknown platform")
-    
-            if (self.on_dark):
                 self.last_darks.append(True)
-            elif (self.on_light):
-                self.last_darks.append(False)
-    
+                
             right_turn = (reduce((lambda x,y: x and y),self.last_darks) and self.side_of_line) or ( reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks )) and not self.side_of_line)
             
             left_turn = right_turn = (reduce((lambda x,y: x and y),self.last_darks) and not self.side_of_line) or ( reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks )) and self.side_of_line)
@@ -74,7 +69,7 @@ cl=ColorSensor()
 left_motor=LargeMotor('outB')
 right_motor=LargeMotor('outA')
 
-lf = Linefollower(cl, left_motor, right_motor, cs)
+lf = Linefollower(cl, left_motor, right_motor)
 lf.line_following_on = True
 
 
