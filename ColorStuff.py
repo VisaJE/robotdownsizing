@@ -12,7 +12,7 @@ class ColorStuff:
     
     # Returns tuple (seen color name, is the color within the threshold)
     def getColor():
-        return getColor(getColorH())
+        return self.getColor(self.getColorH())
 
     def getColorH():
         oldMode = cl.mode
@@ -31,7 +31,7 @@ class ColorStuff:
         return min(dists, key=lambda t: t[1])
 
     def getColor(color):
-        found = getClosestKnown(color)
+        found = self.getClosestKnown(color)
         return (found[0][0], found[1] < differenceThreshold)
 
 
@@ -74,4 +74,4 @@ class ColorStuff:
             colors.append(getAvrColor)
         turnRight(t*degrees)
         print("Adding color {}\n".format(name))
-        print("Outcome: {}\n".format(learnColorRight(colors.reverse, name)))
+        print("Outcome: {}\n".format(self.learnColorRight(colors.reverse, name)))
