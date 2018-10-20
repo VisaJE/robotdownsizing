@@ -15,6 +15,8 @@ class Linefollower:
         self.run_time = 50
         self.buffer_size = 12
         self.line_following_on = False
+        self.lm = lm
+        self.rm = rm
     
     def follow_line(self):
     
@@ -43,18 +45,18 @@ class Linefollower:
             move_left = (self.on_dark and not self.side_of_line) or (self.on_light and self.side_of_line)
             
             if (right_turn):
-                lm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                rm.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                self.lm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                self.rm.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
             
             elif (left_turn):
-                rm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                lm.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                self.rm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                self.lm.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
             
             elif(move_right):
-                lm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                self.lm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                
             elif(move_left): 
-                rm.run_timed(time_sp=self.run_time, speed_sp=-self.speed,stop_action='brake')
+                self.rm.run_timed(time_sp=self.run_time, speed_sp=-self.speed,stop_action='brake')
             
             
                 
