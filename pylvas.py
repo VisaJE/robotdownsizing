@@ -53,7 +53,7 @@ class Pylvas_solver:
 
     def find_orientation(self):
             tmp_or=math.atan((self.position[1]-self.preferred[self.stage][1])/(self.position[0]-self.preferred[self.stage][0]+0.000001))
-            indegs=self.orientation-tmp_or/2/math.Pi*360
+            indegs=self.orientation-tmp_or/2/math.pi*360
             return indegs
 
     def calculate_distance(self):
