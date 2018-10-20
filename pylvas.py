@@ -38,7 +38,7 @@ class Pylvas_solver:
         if bump_r:
             self.bumped_right=True
             return False
-        self.position=self.preferred[stage]
+        self.position=self.preferred[self.stage]
         self.stage+=1
         return True
 
