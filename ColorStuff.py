@@ -23,6 +23,7 @@ class ColorStuff:
         g = self.cl.value(1)
         b = self.cl.value(2)
         self.cl.mode = oldMode
+        print("mitattu " + str(r) + " " + str(g) + " " + str(b))
         return self.RGBColor(r, g, b)
 
     def getDistance(self, color1, color2):
@@ -30,6 +31,7 @@ class ColorStuff:
 
     def getClosestKnown(self, color1):
         dists = zip(self.knownColors.items(), map((lambda x: self.getDistance(color1, x[1]) ), self.knownColors.items() ))
+        print(str(dists))
         return min(dists, key=lambda t: t[1])
 
     def getColor(self, color):
@@ -62,7 +64,7 @@ class ColorStuff:
         for i in range(9):
             sleep(0.1)
             newCol = self.getColorH()
-            color.r = color.r + newCol.r
+            color.r = color.r + newCol. r
             color.g = color.g + newCol.g
             color.b = color.b + newCol.b
         color.r = color.r /10
