@@ -52,6 +52,8 @@ class Pylvas_solver:
 
         #self.position=self.preferred[self.stage]
         self.stage+=1
+        if self.stage == len(preferred):
+            self.not_done = False
         return True
 
     def fix_orientation(self):
