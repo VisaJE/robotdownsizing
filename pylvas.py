@@ -4,9 +4,9 @@ from ev3dev.ev3 import *
 
 class Pylvas_solver:
     not_done=True
-    position=[75,0]
+    position=[75,-10]
     orientation=90
-    preferred=[[75,20],[117,35], [70,75], [135,95], [130,135], [75,140], [75, 170]]
+    preferred=[[75,10],[117,35], [70,75], [135,95], [130,135], [75,140], [75, 170]]
     stage=0
     last_moves=0
     bumped_left=False
