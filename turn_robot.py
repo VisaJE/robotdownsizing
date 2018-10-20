@@ -24,7 +24,7 @@ def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distanc
     bumped_left=False
     epsilon=1
     pseudo_distance=100*distance
-    while (not (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed)) and pseudo_distance < distance:
+    while (not (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed)) and mov < pseudo_distance:
         if mov + epsilon < pseudo_distance:
             left_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)
             right_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)

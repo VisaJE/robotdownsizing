@@ -8,7 +8,7 @@ class Pylvas_solver:
     orientation=90
     preferred=[[75,15],[90,25]]
     stage=0
-    last_move=0
+    last_moves=0
     bumped_left=False
     bumped_right=False
     def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left):
@@ -38,7 +38,6 @@ class Pylvas_solver:
         if bump_r:
             self.bumped_right=True
             return False
-
         position=preferred[stage]
         stage+=1
         return True
