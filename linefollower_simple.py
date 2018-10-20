@@ -38,8 +38,8 @@ class Linefollower:
             moveleft = (self.on_light and self.side_of_line) or (self.on_dark and not self.side_of_line)
     
             if (turnright):
-                move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=9)
-                turn_right(left_motor, right_motor,degrees=90)
+                move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=7)
+                turn_right(left_motor, right_motor,degrees=85)
                 #turn right
                 #left_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
                 #right_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
@@ -62,7 +62,7 @@ class Linefollower:
     
             if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
                 print("COLLISION! MOVING BACKWARDS")
-                move_backwards(left_motor, right_motor,distance=5)
+                move_backwards(left_motor, right_motor,distance=3)
     
             if (len(self.last_darks) > self.buffer_size):
                 self.last_darks.pop(0)
