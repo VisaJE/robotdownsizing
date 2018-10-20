@@ -16,7 +16,7 @@ right_motor=LargeMotor('outA')
 side_of_line = -1 # 1 if left, -1 if right
 speed = 200 * side_of_line
 run_time = 50
-
+buffer_size = 4
 line_following_on = False
 
 
@@ -52,12 +52,15 @@ def follow_line():
             right_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
             print("liiku oikealle")
     
-        if (len(last_darks) > 4):
+        if (len(last_darks) > buffer_size):
             last_darks.pop(0)
         print("kierros")
         sleep(0.05)    
 
-print("start following")
+
+speed = int(input("SPEED: "))
+run_time = int(input("RUNTIME: "))
+buffer_size = int(input("BUFFERSIZE: "))
 line_following_on = True
 
 
