@@ -20,8 +20,8 @@ class Linefollower:
     
         if (self.line_following_on):
         
-            self.on_light=cl.value()>=50
-            self.on_dark=cl.value()<50
+            self.on_light=cl.value()>=25
+            self.on_dark=cl.value()<25
             print(cl.value())
     
             if (self.on_dark):
