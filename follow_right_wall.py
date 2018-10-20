@@ -14,7 +14,9 @@ class FollowRight:
         self.us_sensor=us_sensor
 
     def initial_turn(self):
+        print("Turning towards a wall")
         turn_right(self.left_motor, self.right_motor, 40)
+
     def findWall(self):
         print("Finding wall")
         found = moveWithUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=40, usDist=self.wallUsPadding)
@@ -40,7 +42,7 @@ class FollowRight:
             return False
         return True
     
-    def checkStopFlag(self, stopAt):
+    def checkStopFlag(self, stopAt, stopValue):
         if (stopAt == 'distance'):
             print('Stopping at distance {}'.format(stopAt))
             print('driven')
@@ -68,5 +70,6 @@ class FollowRight:
         while(not self.doneFlag):
             step = moveWithUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=20, usDist=self.wallUsPadding)
             self.driven += step[0]
+            checkStopFlag(self, stopAt, stopValue)
             if (not self.doneFlag):
                 self.checkWall()
