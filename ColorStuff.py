@@ -11,10 +11,10 @@ class ColorStuff:
         self.differenceThreshold = 40
     
     # Returns tuple (seen color name, is the color within the threshold)
-    def getColor():
+    def getColor(self):
         return self.getColor(self.getColorH())
 
-    def getColorH():
+    def getColorH(self):
         oldMode = cl.mode
         cl.mode='RGB-RAW'
         r = cl.value(0)
@@ -23,19 +23,19 @@ class ColorStuff:
         c1.mode = oldMode
         return RGBColor(r, g, b)
 
-    def getDistance(color1, color2):
+    def getDistance(self, color1, color2):
         return sqrt(pow(color1['r']-color2['r'], 2) + pow(color1['g']-color2['g'],2) + pow(color1['b']-color2['b'], 2))
 
-    def getClosestKnown(color1):
+    def getClosestKnown(self, color1):
         dists = zip(knownColors.items(), knownColors.items().map(lambda x: getDistance(color1, x[1])))
         return min(dists, key=lambda t: t[1])
 
-    def getColor(color):
+    def getColor(self, color):
         found = self.getClosestKnown(color)
         return (found[0][0], found[1] < differenceThreshold)
 
 
-    def learnColorRight(colors, name):
+    def learnColorRight(self, colors, name):
         trimLeft = colors.copy()
         trimRight = colors.copy()
         n = len(colors)
@@ -55,7 +55,7 @@ class ColorStuff:
         else:
             return False
 
-    def getAvrColor():
+    def getAvrColor(self):
         color = getColorH()
         for i in range(9):
             sleep(0.1)
@@ -65,7 +65,7 @@ class ColorStuff:
         for c in ['r', 'g', 'b']:
             color[c] /= 10
 
-    def findColorFromRight(name):
+    def findColorFromRight(self, name):
         colors = [getAvrColor()]
         points = 5
         degrees = 5
