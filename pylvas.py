@@ -6,7 +6,7 @@ class Pylvas_solver:
     not_done=True
     position=[75,0]
     orientation=90
-    preferred=[[75,15],[90,25]]
+    preferred=[[75,15],[90,25], [60,35]]
     stage=0
     last_moves=0
     bumped_left=False
@@ -43,7 +43,7 @@ class Pylvas_solver:
         return True
 
     def step_backwards(self):
-        move_backwards(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, last_move)
+        move_backwards(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.last_move)
         if self.bumped_right:
             turn_left(self.left_motor,self.right_motor,10)
         if self.bumped_left:
