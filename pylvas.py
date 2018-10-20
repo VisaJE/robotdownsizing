@@ -26,6 +26,7 @@ class Pylvas_solver:
 
     def step_forward(self):
         orientation_change=self.find_orientation()
+        orientation+=orientation_change
         print("Orientation change: ", orientation_change)
         if orientation_change>0 :
             turn_left(self.left_motor,self.right_motor,orientation_change)
@@ -47,7 +48,7 @@ class Pylvas_solver:
 
     def step_backwards(self):
         move_backwards(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.last_move)
-        degree = 5
+        degree = 2
         if self.bumped_right:
             print("turning left")
             turn_left(self.left_motor,self.right_motor,degree)
