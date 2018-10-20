@@ -49,10 +49,10 @@ class Linefollower:
             
             elif(move_right):
                 self.lm.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-               
+                self.rm.run_timed(time_sp=self.run_time, speed_sp=-0.5*self.speed, stop_action='brake')
             elif(move_left): 
                 self.rm.run_timed(time_sp=self.run_time, speed_sp=-self.speed,stop_action='brake')
-            
+                self.lm.run_timed(time_sp=self.run_time, speed_sp=-0.5*self.speed, stop_action='brake')
             
                 
             if (len(self.last_darks) > self.buffer_size):
@@ -73,9 +73,9 @@ lf = Linefollower(cl, left_motor, right_motor)
 lf.line_following_on = True
 
 
-#lf.speed = int(input("SPEED: "))
-#lf.run_time = int(input("RUNTIME: "))
-#lf.buffer_size = int(input("BUFFERSIZE: "))
+lf.speed = int(input("SPEED: "))
+lf.run_time = int(input("RUNTIME: "))
+lf.buffer_size = int(input("BUFFERSIZE: "))
 
 
 #rampille
