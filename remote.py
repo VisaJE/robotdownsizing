@@ -9,7 +9,7 @@ class Remote:
         lm = LargeMotor('outB')
         rm = LargeMotor('outA')
     def inputLoop(self):
-    	print("remote start")
+        print("remote start")
         while True:
             inp = input("")
             if inp == 'q':
