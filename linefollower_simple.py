@@ -39,7 +39,7 @@ class Linefollower:
     
             if (turnright):
                 move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=7)
-                turn_right(left_motor, right_motor,degrees=80)
+                turn_right(left_motor, right_motor,degrees=70)
                 #turn right
                 #left_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
                 #right_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
