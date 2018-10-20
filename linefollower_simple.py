@@ -31,21 +31,35 @@ class Linefollower:
     
             if (reduce((lambda x,y: x and y),self.last_darks)):
                 #turn right
-                left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                if (self.side_of_line):
+                    left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                else:
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                    left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
                 #print("käänny oikealle")
             elif (reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks))):
                 #turn left
-                right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
-                #print("käänny vasemmalle")
-            elif(self.side_of_line != self.on_dark):
-                #move right
+                if (self.side_of_line):
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                    left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                else:
                 left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                #print("käänny vasemmalle")
+            elif(self.on_dark):
+                #move right
+                if (self.side_of_line):
+                    left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                else:
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')    
                 #print("liiku vasemmalle")
-            elif(self.side_of_line != self.on_light):
+            elif(self.on_light):
                 #move left
-                right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                if (side_of_line):
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                else:
+                    left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')    
                 #print("liiku oikealle")
     
             if (len(self.last_darks) > self.buffer_size):
