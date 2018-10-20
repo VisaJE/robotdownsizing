@@ -3,9 +3,7 @@ from time import sleep
 
 
 class LineFollower:
-    def __init__(self):
-        self.btn = Button()
-        self.shut_down = False
+
     def run(self):
 
         cs = ColorSensor();      
@@ -59,13 +57,6 @@ class LineFollower:
                 sleep(dt / 1000)
 
             previous_error = error
-
-            if not self.btn.down:
-                print("Exit program... ")
-                self.shut_down = True
-            elif not self.btn.left:
-                print("[Pause]")
-                self.pause()
 
     def pause(self, pct=0.0, adj=0.01):
         while self.btn.right or self.btn.left:
