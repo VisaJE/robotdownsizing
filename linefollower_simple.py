@@ -59,7 +59,7 @@ class Linefollower:
     
             if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
                 print("COLLISION! MOVING BACKWARDS")
-                move_backwards(left_motor, right_motor, distance=5)
+                move_backwards(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=5)
     
             if (len(self.last_darks) > self.buffer_size):
                 self.last_darks.pop(0)
