@@ -45,7 +45,7 @@ class ColorStuff:
             for i in ('r', 'g', 'b'):
                 trimLeft[ind][i] = trimLeft[ind-1][i]*1.0*ind/(ind+1)+trimLeft[ind][i]*1.0/(ind+1)
                 trimRight[ind+1][i] = (trimRight[ind][i]*(n-ind) - colors[ind][i])/(n-ind-1)
-        trimLeft = range(n).map(lambda a: self.getDistance(trimLeft[a], trimRight[a]))
+        trimLeft = map(lambda a: self.getDistance(trimLeft[a], trimRight[a]), range(n))
         trimLeft[0] = 0
         trimLeft[n-1] = 0
         found = max(zip(trimLeft, range(n)), key= lambda a: a[0])
