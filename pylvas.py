@@ -48,7 +48,7 @@ class Pylvas_solver:
 
     def step_backwards(self):
         move_backwards(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.last_move)
-        degree = 2
+        degree = 5
         if self.bumped_right:
             print("turning left")
             turn_left(self.left_motor,self.right_motor,degree)
