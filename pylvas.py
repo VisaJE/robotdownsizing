@@ -21,7 +21,7 @@ class Pylvas_solver:
         while self.not_done:
             while self.step_forward():
                 pass
-            if calculate_distance > 10:
+            if self.calculate_distance() > 10:
                 self.fix_orientation()
             else:
                 self.fix_position()
