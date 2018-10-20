@@ -26,6 +26,7 @@ class Pylvas_solver:
 
     def step_forward(self):
         orientation_change=self.find_orientation()
+        print("Orientation change: ", orientation_change)
         if orientation_change>0 :
             turn_left(self.left_motor,self.right_motor,orientation_change)
         else:
@@ -34,11 +35,11 @@ class Pylvas_solver:
         self.last_move,bump_l,bump_r=move(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right,desired_dist)
         if bump_l:
             self.bumped_left=True
-            print("bumped left")
+            #print("bumped left")
             return False
         if bump_r:
             self.bumped_right=True
-            print("bumped right")
+            #print("bumped right")
             return False
         self.position=self.preferred[self.stage]
         self.stage+=1

@@ -3,14 +3,15 @@ from time import sleep
 import math
 
 def turn_left(left_motor,right_motor,degrees=90, flag=1): # flag=1 turns left, -1 turns right
+    print("Flag: ", flag)
     time = 60+abs(degrees)*540/45
-    left_motor.run_timed(speed_sp=flag*-200,time_sp=time,stop_action='brake')
-    right_motor.run_timed(speed_sp=flag*200,time_sp=time,stop_action='brake')
+    left_motor.run_timed(speed_sp=flag*200,time_sp=time,stop_action='brake')
+    right_motor.run_timed(speed_sp=flag*-200,time_sp=time,stop_action='brake')
     sleep(time/1000)
     return
 
 def turn_right(left_motor,right_motor,degrees=90):
-    turn_left(left_motor, right_motor, degrees, -1)
+    turn_left(left_motor, right_motor, degrees, flag=-1)
     return
 
 def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500):
