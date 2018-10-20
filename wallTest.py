@@ -11,4 +11,4 @@ tsr=TouchSensor('in2')
 tsl=TouchSensor('in3')
 
 follower = FollowRight(lm, rm, tsl, tsr, us)
-follower.execute()
+follower.execute('none', 1)
