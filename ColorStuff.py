@@ -2,6 +2,7 @@ from ev3dev.ev3 import *
 from time   import sleep
 from collections import namedtuple
 from functools import reduce
+from math import *
 
 class ColorStuff:
     def __init__(self):
