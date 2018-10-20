@@ -18,6 +18,7 @@ while True:
 	print(cs.getColorFUCK()[0])
 	distance = us.value()
 	print("dist " + str(distance))
+	input("Press Enter to continue...")
 	if tsr.value():
 		state = 1
 	if cs.getColorFUCK()[0] == 'changeRed':
