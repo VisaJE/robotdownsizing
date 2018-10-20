@@ -2,20 +2,20 @@ from ev3dev.ev3 import *
 from time   import sleep
 from functools import reduce
 
-#cl=ColorSensor()
+cl=ColorSensor()
 on_dark=True
 on_light=False
 
 
 last_darks = []
 
-#cl.mode='COL-REFLECT'
-#left_motor=LargeMotor('outB')
-#right_motor=LargeMotor('outA')
+cl.mode='COL-REFLECT'
+left_motor=LargeMotor('outB')
+right_motor=LargeMotor('outA')
 
-side_of_line = 1# 1 if left, -1 if right
-speed = 300 * side_of_line
-
+side_of_line = -1 # 1 if left, -1 if right
+speed = 200 * side_of_line
+run_time = 50
 
 line_following_on = False
 
@@ -35,27 +35,27 @@ def follow_line():
     
         if (reduce((lambda x,y: x and y),last_darks)):
             #turn right
-            left_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
-            right.run_timed(time_sp=100, speed_sp=speed, stop_action='brake')
+            left_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
+            right.run_timed(time_sp=run_time, speed_sp=speed, stop_action='brake')
             print("käänny oikealle")
         elif (reduce((lambda x,y: x and y), map((lambda x: not x), last_darks))):
             #turn left
-            right_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
-            left_motor.run_timed(time_sp=100, speed_sp=speed, stop_action='brake')
+            right_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
+            left_motor.run_timed(time_sp=run_time, speed_sp=speed, stop_action='brake')
             print("käänny vasemmalle")
         elif(on_dark):
             #move right
-            left_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
+            left_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
             print("liiku vasemmalle")
         elif(on_light):
             #move left
-            right_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
+            right_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
             print("liiku oikealle")
     
         if (len(last_darks) > 4):
             last_darks.pop(0)
         print("kierros")
-        sleep(0.1)    
+        sleep(0.05)    
 
 print("start following")
 line_following_on = True
