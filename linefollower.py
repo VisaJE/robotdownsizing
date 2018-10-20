@@ -28,7 +28,7 @@ class LineFollower:
 
         target_value = cs.value()
 
-        while not self.shut_down:
+        while True:
 
 
            # distance = us.value() // 10 
