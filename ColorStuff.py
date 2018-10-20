@@ -28,7 +28,7 @@ class ColorStuff:
         return sqrt(pow(color1['r']-color2['r'], 2) + pow(color1['g']-color2['g'],2) + pow(color1['b']-color2['b'], 2))
 
     def getClosestKnown(self, color1):
-        dists = zip(self.knownColors.items(), self.knownColors.items().map(lambda x: getDistance(color1, x[1])))
+        dists = zip(self.knownColors.items(), map((lambda x: getDistance(color1, x[1]) ), self.knownColors.items() ))
         return min(dists, key=lambda t: t[1])
 
     def getColor(self, color):
