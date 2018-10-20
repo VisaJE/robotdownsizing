@@ -18,36 +18,36 @@ class Pylvas_solver:
         self.touch_sensor_right=touch_sensor_right
 
     def execute(self):
-        while not_done:
-            while step_forward():
+        while self.not_done:
+            while self.step_forward():
                 pass
-            step_backwards()
+            self.step_backwards()
         return True
 
     def step_forward(self):
-        orientation_change=find_orientation()
+        orientation_change=self.find_orientation()
         if orientation_change>0 :
-            turn_left(left_motor,right_motor,orientation_change)
+            turn_left(self.left_motor,self.right_motor,orientation_change)
         else:
-            turn_right(left_motor,right_motor,-orientation_change)
+            turn_right(self.left_motor,self.right_motor,-orientation_change)
         desired_dist=calculate_distance()
-        self.last_move,bump_l,bump_r=move(left_motor,right_motor, touch_sensor_left, touch_sensor_right,desired_dist)
+        self.last_move,bump_l,bump_r=move(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right,desired_dist)
         if bump_l:
             self.bumped_left=True
             return False
         if bump_r:
             self.bumped_right=True
             return False
-        position=preferred[stage]
-        stage+=1
+        self.position=self.preferred[stage]
+        self.stage+=1
         return True
 
     def step_backwards(self):
-        move_backwards(left_motor,right_motor, touch_sensor_left, touch_sensor_right, last_move)
-        if bumped_right:
-            turn_left(left_motor,right_motor,10)
-        if bumped_left:
-            turn_right(left_motor,right_motor,10)
+        move_backwards(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, last_move)
+        if self.bumped_right:
+            turn_left(self.left_motor,self.right_motor,10)
+        if self.bumped_left:
+            turn_right(self.left_motor,self.right_motor,10)
         self.bumped_left=False
         self.bumped_right=False
 
