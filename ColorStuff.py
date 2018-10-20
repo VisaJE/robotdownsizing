@@ -7,6 +7,7 @@ class ColorStuff:
     def __init__(self):
         self.cl = ColorSensor()
         RGBColor = namedtuple('RGBColor', 'r g b')
+        self.RGBColor = namedtuple('RGBColor', 'r g b')
         self.knownColors = {'null': RGBColor(0, 0, 0), 'changeRed': RGBColor(190, 210, 270), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(160, 230, 210)}
         self.differenceThreshold = 40
     
@@ -21,7 +22,7 @@ class ColorStuff:
         g = self.cl.value(1)
         b = self.cl.value(2)
         self.cl.mode = oldMode
-        return RGBColor(r, g, b)
+        return self.RGBColor(r, g, b)
 
     def getDistance(self, color1, color2):
         return sqrt(pow(color1['r']-color2['r'], 2) + pow(color1['g']-color2['g'],2) + pow(color1['b']-color2['b'], 2))
