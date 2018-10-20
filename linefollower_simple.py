@@ -20,9 +20,9 @@ class Linefollower:
     
         if (self.line_following_on):
         
-            self.on_light=cl.value()>=30
-            self.on_dark=cl.value()<30
-            print( "light: " + str(self.on_light) + ", dark: " + str(self.on_dark))
+            self.on_light=cl.value()>=50
+            self.on_dark=cl.value()<50
+            print(cl.value())
     
             if (self.on_dark):
                 self.last_darks.append(True)
