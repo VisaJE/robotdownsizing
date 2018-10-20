@@ -32,7 +32,7 @@ def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distanc
         sleep(c*epsilon/1000)
     bumped_right=touch_sensor_right.is_pressed
     bumped_left=touch_sensor_left.is_pressed
-    return distance, bumped_left, bumped_right
+    return mov, bumped_left, bumped_right
 
 def move_backwards(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500):
     c = 50
