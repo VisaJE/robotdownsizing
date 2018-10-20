@@ -2,16 +2,16 @@ from ev3dev.ev3 import *
 from time   import sleep
 from functools import reduce
 
-cl=ColorSensor()
+#cl=ColorSensor()
 on_dark=True
-on_light=True
+on_light=False
 
 
 last_darks = []
 
-cl.mode='COL-REFLECT'
-left_motor=LargeMotor('outB')
-right_motor=LargeMotor('outA')
+#cl.mode='COL-REFLECT'
+#left_motor=LargeMotor('outB')
+#right_motor=LargeMotor('outA')
 
 side_of_line = 1# 1 if left, -1 if right
 speed = 300 * side_of_line
@@ -20,16 +20,12 @@ speed = 300 * side_of_line
 line_following_on = False
 
 
-def start_following():
-    line_following_on = True
-
-
 def follow_line():
 
     if (line_following_on):
-
-        on_light=cl.value()>40
-        on_dark=cl.value()<60
+        
+        #on_light=cl.value()>40
+        #on_dark=cl.value()<60
         print( "light: " + str(on_light) + ", dark: " + str(on_dark))
     
         if (on_dark):
@@ -61,8 +57,9 @@ def follow_line():
         print("kierros")
         sleep(0.1)    
 
+print("start following")
+line_following_on = True
 
-start_following()
 
 while (True):
     follow_line()
