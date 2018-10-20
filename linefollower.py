@@ -6,8 +6,8 @@ class LineFollower:
 
     def run(self):
 
-        cs = ColorSensor();      
-        #us = UltrasonicSensor(); assert us.connected 
+        cs = ColorSensor();
+        #us = UltrasonicSensor(); assert us.connected
 
         cs.mode = 'COL-REFLECT'
         #us.mode = 'US-DIST-CM'
@@ -15,12 +15,12 @@ class LineFollower:
         lm = LargeMotor('outB')
         rm = LargeMotor('outA')
 
-        speed = 360/4 
-        dt = 500 
+        speed = 360/4
+        dt = 500
         stop_action = "coast"
 
-        Kp = 1 
-        Ki = 0 
+        Kp = 1
+        Ki = 0
         Kd = 0
 
         integral = 0
@@ -31,7 +31,7 @@ class LineFollower:
         while True:
 
 
-           # distance = us.value() // 10 
+           # distance = us.value() // 10
 
             error = target_value - cs.value()
             integral += (error * dt)
