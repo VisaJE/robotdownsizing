@@ -20,6 +20,7 @@ class Pylvas_solver:
     def execute(self):
         while not_done:
             while step_forward():
+                pass
             step_backwards()
         return True
 
