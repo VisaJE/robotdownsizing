@@ -1,20 +1,15 @@
 import ev3dev.ev3 as ev3
 from time import sleep
 
-def turn_left(left_motor,right_motor,degrees=90):
-    c=14
-    b=0
-    t=90*14-100
-    s=45*14-50+20
-
-    left_motor.run_timed(speed_sp=200,time_sp=60+degrees*540/45,stop_action='brake')
-    right_motor.run_timed(speed_sp=-200,time_sp=60+degrees*540/45,stop_action='brake')
+def turn_left(left_motor,right_motor,degrees=90, flag=1): # flag=1 turns left, -1 turns right
+    left_motor.run_timed(speed_sp=flag*200,time_sp=60+degrees*540/45,stop_action='brake')
+    right_motor.run_timed(speed_sp=flag*-200,time_sp=60+degrees*540/45,stop_action='brake')
+    return
 
 
 def turn_right(left_motor,right_motor,degrees=90):
-    left_motor.run_timed(speed_sp=-200,time_sp=s,stop_action='brake')
-    right_motor.run_timed(speed_sp=200,time_sp=s,stop_action='brake')
-
+    turn_left(left_motor, right_motor, degrees, -1)
+    return
 
 
 def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500):
