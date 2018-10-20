@@ -25,19 +25,19 @@ class Remote:
             screen.addch(inp)
             screen.refresh()
             if inp == 'a':
-                self.rm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
+                self.rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
             elif inp == 's':
-                self.lm.run_timed(time_sp=250, speed_sp=300, stop_action='brake')
-                self.rm.run_timed(time_sp=250, speed_sp=300, stop_action='brake')
+                self.lm.run_timed(time_sp=250, speed_sp=400, stop_action='brake')
+                self.rm.run_timed(time_sp=250, speed_sp=400, stop_action='brake')
             elif inp == 'd':
-                self.lm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
+                self.lm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
             elif inp == 'w':
-                self.lm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
-                self.rm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
+                self.lm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
+                self.rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
             elif inp == 'r':
-                self.mm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
+                self.mm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
             elif inp == 't':
-                self.mm.run_timed(time_sp=250, speed_sp=300, stop_action='brake')
+                self.mm.run_timed(time_sp=250, speed_sp=400, stop_action='brake')
             sleep(0.25)
         curses.endwin()
         print("remote exit")
