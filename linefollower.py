@@ -1,21 +1,21 @@
-import ev3dev.ev3 as ev3
+from ev3dev.ev3 import *
 from time import sleep
 
 
 class LineFollower:
     def __init__(self):
-        self.btn = ev3.Button()
+        self.btn = Button()
         self.shut_down = False
     def run(self):
 
-        cs = ev3.ColorSensor();      assert cs.connected
-        us = ev3.UltrasonicSensor(); assert us.connected 
+        cs = ColorSensor();      
+        #us = UltrasonicSensor(); assert us.connected 
 
         cs.mode = 'COL-REFLECT'
-        us.mode = 'US-DIST-CM'
+        #us.mode = 'US-DIST-CM'
 
-        lm = ev3.LargeMotor('outB');  assert lm.connected 
-        rm = ev3.LargeMotor('outA');  assert rm.connected
+        lm = LargeMotor('outB')
+        rm = LargeMotor('outA')
 
         speed = 360/4 
         dt = 500 
@@ -33,7 +33,7 @@ class LineFollower:
         while not self.shut_down:
 
 
-            distance = us.value() // 10 
+           # distance = us.value() // 10 
 
             error = target_value - cs.value()
             integral += (error * dt)
@@ -76,8 +76,8 @@ class LineFollower:
             pct = pct + adj
 
         print("[Continue]")
-        ev3.Leds.set_color(ev3.Leds.LEFT, ev3.Leds.GREEN)
-        ev3.Leds.set_color(ev3.Leds.RIGHT, ev3.Leds.GREEN)
+        Leds.set_color(ev3.Leds.LEFT, ev3.Leds.GREEN)
+        Leds.set_color(ev3.Leds.RIGHT, ev3.Leds.GREEN)
 
 if __name__ == "__main__":
     robot = LineFollower()
