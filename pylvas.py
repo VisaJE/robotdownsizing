@@ -6,7 +6,7 @@ class Pylvas_solver:
     not_done=True
     position=[75,0]
     orientation=90
-    preferred=[[75,15],[90,25], [60,35]]
+    preferred=[[75,15],[105,35], [110,55],[75,80]]
     stage=0
     last_moves=0
     bumped_left=False
@@ -29,7 +29,7 @@ class Pylvas_solver:
         if orientation_change>0 :
             turn_left(self.left_motor,self.right_motor,orientation_change)
         else:
-            turn_right(self.left_motor,self.right_motor,-orientation_change)
+            turn_right(self.left_motor,self.right_motor,orientation_change)
         desired_dist=self.calculate_distance()
         self.last_move,bump_l,bump_r=move(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right,desired_dist)
         if bump_l:
