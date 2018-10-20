@@ -16,29 +16,38 @@ class FollowRight:
     def initial_turn(self):
         turn_right(left_motor, right_motor, 40)
     def findWall(self):
+        print("Finding wall")
         found = moveWithUv(left_motor, right_motor, touch_sensor_left, touch_sensor_right, uv_sensor, distance=40, uvDist=wallUvPadding)
         driven += found[0]
         if found[0]+3 >= distance:
+            print("Not found yet")
             initial_turn(self)
             findWall(self)
         elif found[1]:
+            print("Left hit")
             move_backwards(left_motor, right_motor, 5)
             turn_left(left_motor, right_motor, 70)
         elif found[2]:
+            print("right hit")
             move_backwards(left_motor, right_motor, 3)
             turn_left(left_motor, right_motor, 20)
         elif found[3] <= uvDist:
+            print("Uv dist reached")
             move_backwards(left_motor, right_motor, 4)
             turn_left(left_motor, right_motor, 45)
-        else return False
+        else:
+            return False
         return True
     
     def checkStopFlag(self, stopAt):
         if (stopAt = 'distance'):
+            print('Stopping at distance {}'.format(stopAt))
+            print('driven')
             if driven >= stopValue:
                 doneFlag = True
 
     def checkWall(self):
+        print('Checking if wall is here')
         turn_right(left_motor, right_motor, 90)
         if uv_sensor.value() > wallUvPadding):
             res = moveWithUv(left_motor,right_motor, touch_sensor_left, touch_sensor_right, uv_sensor, distance=uv_sensor.value()-wallUvPadding, uvDist=wallUvPadding)
@@ -51,6 +60,7 @@ class FollowRight:
             turn_left(left_motor, right_motor, 90)
 
     def execute(self, stopAt, stopValue):
+        print("Executing")
         doneFlag = False
         initial_turn(self)
         findWall(self)
