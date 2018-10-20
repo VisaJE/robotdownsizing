@@ -68,8 +68,8 @@ class Pylvas_solver:
             turn_right(self.left_motor,self.right_motor,degree)
         self.bumped_left=False
         self.bumped_right=False
-        self.position[0]-=math.cos(self.orientation/360*2*math.pi)*self.last_moves
-        self.position[1]-=math.sin(self.orientation/360*2*math.pi)*self.last_moves
+        self.position[0]-=math.cos(self.orientation/360*2*math.pi)*dist
+        self.position[1]-=math.sin(self.orientation/360*2*math.pi)*dist
         print("Position: ", self.position)
         return
 
