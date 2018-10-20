@@ -11,7 +11,7 @@ class FollowRight:
         self.right_motor=right_motor
         self.touch_sensor_left=touch_sensor_left
         self.touch_sensor_right=touch_sensor_right
-        self.un_sensor=us_sensor
+        self.us_sensor=us_sensor
 
     def initial_turn(self):
         turn_right(self.left_motor, self.right_motor, 40)
