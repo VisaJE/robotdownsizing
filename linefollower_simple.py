@@ -35,13 +35,9 @@ class Linefollower:
             elif (self.on_light):
                 self.last_darks.append(False)
     
-            right_turn = (reduce((lambda x,y: x and y),self.last_darks) 
-and self.side_of_line) or ( reduce((lambda x,y: x and y), map((lambda x: 
-not x) )) and not self.side_of_line)
+            right_turn = (reduce((lambda x,y: x and y),self.last_darks) and self.side_of_line) or ( reduce((lambda x,y: x and y), map((lambda x: not x) )) and not self.side_of_line)
             
-            left_turn = right_turn = (reduce((lambda x,y: x and 
-y),self.last_darks) and not self.side_of_line) or ( reduce((lambda x,y: 
-x and y), map((lambda x: not x) )) and self.side_of_line)
+            left_turn = right_turn = (reduce((lambda x,y: x and y),self.last_darks) and not self.side_of_line) or ( reduce((lambda x,y: x and y), map((lambda x: not x) )) and self.side_of_line)
             
             move_right = (self.on_dark and self.side_of_line) or (self.on_light and not self.side_of_line)            
             move_left = (self.on_dark and not self.side_of_line) or (self.on_light and self.side_of_line)
