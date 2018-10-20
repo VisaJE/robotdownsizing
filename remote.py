@@ -8,6 +8,7 @@ class Remote:
     def __init__(self):
         self.lm = LargeMotor('outB')
         self.rm = LargeMotor('outA')
+        self.mm = Motor('outC')
     def inputLoop(self):
         print("remote start")
         while True:
@@ -24,5 +25,7 @@ class Remote:
             elif inp == 'w':
                 self.lm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
                 self.rm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
+            elif inp == 'r':
+            	self.mm.run_timed(time_sp=250, speed_sp=-300, stop_action='brake')
             sleep(0.25)
         print("remote exit")
