@@ -11,11 +11,8 @@ class Linefollower:
         self.on_light=False
         cl.mode='COL-REFLECT'
         self.last_darks = []
-<<<<<<< HEAD
-        self.side_of_line = False # False if left, True if right
-=======
+        
         self.side_of_line = False # False if right, True if left
->>>>>>> joitain esilletulleita muutoksia melkein toimivaan linefolloweriin
         self.speed = 200
         self.run_time = 50
         self.buffer_size = 4
@@ -88,68 +85,6 @@ lf.buffer_size = int(input("BUFFERSIZE: "))
 
 while(True):
     lf.follow_line()
-
-"""cl=ColorSensor()
-on_dark=True
-on_light=False
-
-
-last_darks = []
-
-cl.mode='COL-REFLECT'
-left_motor=LargeMotor('outB')
-right_motor=LargeMotor('outA')
-
-side_of_line = -1 # 1 if left, -1 if right
-speed = 200 * side_of_line
-run_time = 50
-buffer_size = 4
-line_following_on = False
-
-
-def follow_line():
-
-    if (line_following_on):
-        
-        #on_light=cl.value()>40
-        #on_dark=cl.value()<60
-        print( "light: " + str(on_light) + ", dark: " + str(on_dark))
-    
-        if (on_dark):
-            last_darks.append(True)
-        elif (on_light):
-            last_darks.append(False)
-    
-        if (reduce((lambda x,y: x and y),last_darks)):
-            #turn right
-            left_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
-            right.run_timed(time_sp=run_time, speed_sp=speed, stop_action='brake')
-            print("käänny oikealle")
-        elif (reduce((lambda x,y: x and y), map((lambda x: not x), last_darks))):
-            #turn left
-            right_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
-            left_motor.run_timed(time_sp=run_time, speed_sp=speed, stop_action='brake')
-            print("käänny vasemmalle")
-        elif(on_dark):
-            #move right
-            left_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
-            print("liiku vasemmalle")
-        elif(on_light):
-            #move left
-            right_motor.run_timed(time_sp=run_time, speed_sp=-speed, stop_action='brake')
-            print("liiku oikealle")
-    
-        if (len(last_darks) > buffer_size):
-            last_darks.pop(0)
-        print("kierros")
-        sleep(0.05)    
-
-
-line_following_on = True
-
-
-while (True):
-    follow_line()"""
 
 
 
