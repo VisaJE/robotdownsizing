@@ -70,7 +70,7 @@ class Pylvas_solver:
         self.bumped_right=False
         self.position[0]+=math.cos(self.orientation/360*2*math.pi)*(self.last_moves-1.5*dist)
         self.position[1]+=math.sin(self.orientation/360*2*math.pi)*(self.last_moves-1.5*dist)
-        print("Position: ", position)
+        print("Position: ", self.position)
         return
 
     def fix_position(self):
