@@ -32,7 +32,8 @@ class ColorStuff:
     def getClosestKnown(self, color1):
         dists = zip(self.knownColors.items(), map((lambda x: self.getDistance(color1, x[1]) ), self.knownColors.items() ))
         for d in dists:
-        	print(d)
+            print(d)
+            print(len(dists))
         return min(dists, key=lambda t: t[1])
 
     def getColor(self, color):
