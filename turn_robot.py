@@ -15,9 +15,9 @@ def turn_right(left_motor,right_motor,degrees=90):
     return
 
 def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500):
-    move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10, speed=500, None, 0):
+    move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10, speed=500, None, 0)
 
-def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500, uvDist = 30):
+def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, uv_sensor, distance=10,speed=500, uvDist = 30):
     c = 50
     mov = 0
     bumped_right=False
