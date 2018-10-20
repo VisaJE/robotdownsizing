@@ -31,6 +31,7 @@ class ColorStuff:
 
     def getClosestKnown(self, color1):
         dists = zip(self.knownColors.items(), map((lambda x: self.getDistance(color1, x[1]) ), self.knownColors.items() ))
+        dists = list(dists)
         print("mita vi" + str(len(dists)))
         return min(dists, key=lambda t: t[1])
 
