@@ -51,7 +51,7 @@ class Linefollower:
             if (len(self.last_darks) > self.buffer_size):
                 self.last_darks.pop(0)
             #print("kierros")
-            sleep(0.05)            
+            sleep(run_time/1000)            
 
 
          
