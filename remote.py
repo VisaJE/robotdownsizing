@@ -6,8 +6,8 @@ from math import *
 
 class Remote:
     def __init__(self):
-        lm = LargeMotor('outB')
-        rm = LargeMotor('outA')
+        self.lm = LargeMotor('outB')
+        self.rm = LargeMotor('outA')
     def inputLoop(self):
         print("remote start")
         while True:
