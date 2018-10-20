@@ -13,7 +13,7 @@ cl.mode='COL-REFLECT'
 left_motor=LargeMotor('outB')
 right_motor=LargeMotor('outA')
 
-side_of_line = # 1 if left, -1 if right
+side_of_line = 1# 1 if left, -1 if right
 speed = 300 * side_of_line
 
 
@@ -34,7 +34,7 @@ def follow_line():
     
         if (on_dark):
             last_darks.append(True)
-        else if (on_light):
+        elif (on_light):
             last_darks.append(False)
     
         if (reduce((lambda x,y: x and y),last_darks)):
@@ -42,16 +42,16 @@ def follow_line():
             left_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
             right.run_timed(time_sp=100, speed_sp=speed, stop_action='brake')
             print("käänny oikealle")
-        else if (reduce((lambda x,y: x and y), map((lambda x: not x), last_darks))):
+        elif (reduce((lambda x,y: x and y), map((lambda x: not x), last_darks))):
             #turn left
             right_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
             left_motor.run_timed(time_sp=100, speed_sp=speed, stop_action='brake')
             print("käänny vasemmalle")
-        else if(on_dark):
+        elif(on_dark):
             #move right
             left_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
             print("liiku vasemmalle")
-        else if(on_light):
+        elif(on_light):
             #move left
             right_motor.run_timed(time_sp=100, speed_sp=-speed, stop_action='brake')
             print("liiku oikealle")
