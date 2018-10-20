@@ -11,7 +11,7 @@ class ColorStuff:
         self.differenceThreshold = 40
     
     # Returns tuple (seen color name, is the color within the threshold)
-    def getColor(self):
+    def getColorFUCK(self):
         return self.getColor(self.getColorH())
 
     def getColorH(self):

@@ -13,7 +13,7 @@ cs = ColorStuff()
 
 #us.mode='US-DIST-CM'
 
-print(cs.getColor()[0])
+print(cs.getColorFUCK()[0])
 
 
 #while True:
