@@ -9,14 +9,15 @@ tsl = TouchSensor('in4')
 tsr = TouchSensor('in2')
 
 cs = ColorStuff()
-#s = UltrasonicSensor() 
+s = UltrasonicSensor() 
 
-#us.mode='US-DIST-CM'
-
-print(cs.getColorFUCK()[0])
+us.mode='US-DIST-CM'
 
 
-#while True:
-#	distance = us.value()
 
-#	sleep(0.3)
+
+while True:
+	print(cs.getColorFUCK()[0])
+	distance = us.value()
+	print("dist " + str(distance))
+	sleep(0.3)
