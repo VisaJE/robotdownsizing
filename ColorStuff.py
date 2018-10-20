@@ -4,7 +4,6 @@ from collections import namedtuple
 from functools import reduce
 
 class ColorStuff:
-	RGBColor = namedtuple('RGBColor', 'r g b')
     def __init__(self):
         self.cl = ColorSensor()
         RGBColor = namedtuple('RGBColor', 'r g b')
