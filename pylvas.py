@@ -52,7 +52,7 @@ class Pylvas_solver:
 
         #self.position=self.preferred[self.stage]
         self.stage+=1
-        if self.stage == len(preferred):
+        if self.stage == len(self.preferred):
             self.not_done = False
         return True
 

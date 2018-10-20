@@ -5,19 +5,19 @@ from ev3dev.ev3 import *
 class FollowRight:
     doneFlag = False
     driven = 0
-    wallUvPadding = 20
-    def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left, uv_sensor):
+    wallUsPadding = 20
+    def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left, us_sensor):
         self.left_motor=left_motor
         self.right_motor=right_motor
         self.touch_sensor_left=touch_sensor_left
         self.touch_sensor_right=touch_sensor_right
-        self.un_sensor=uv_sensor
+        self.un_sensor=us_sensor
 
     def initial_turn(self):
         turn_right(self.left_motor, self.right_motor, 40)
     def findWall(self):
         print("Finding wall")
-        found = moveWithUv(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.uv_sensor, distance=40, uvDist=wallUvPadding)
+        found = moveWithUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=40, usDist=wallUsPadding)
         driven += found[0]
         if found[0]+3 >= distance:
             print("Not found yet")
@@ -31,8 +31,8 @@ class FollowRight:
             print("right hit")
             move_backwards(self.left_motor, self.right_motor, 3)
             turn_left(self.left_motor, self.right_motor, 20)
-        elif found[3] <= uvDist:
-            print("Uv dist reached")
+        elif found[3] <= usDist:
+            print("Us dist reached")
             move_backwards(self.left_motor, self.right_motor, 4)
             turn_left(self.left_motor, self.right_motor, 45)
         else:
@@ -49,8 +49,8 @@ class FollowRight:
     def checkWall(self):
         print('Checking if wall is here')
         turn_right(self.left_motor, self.right_motor, 90)
-        if uv_sensor.value() > wallUvPadding:
-            res = moveWithUv(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.uv_sensor, distance=uv_sensor.value()-wallUvPadding, uvDist=wallUvPadding)
+        if us_sensor.value() > wallUsPadding:
+            res = moveWithUS(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=us_sensor.value()-wallUsPadding, usDist=wallUsPadding)
             driven += res[0]
             if (res[1] or res[2]):
                 turn_left(self.left_motor, self.right_motor, 70)
@@ -65,7 +65,7 @@ class FollowRight:
         self.initial_turn()
         self.findWall()
         while(not doneFlag):
-            step = moveUv(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.uv_sensor, distance=20, uvDist=wallUvPadding)
+            step = moveUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=20, usDist=wallUsPadding)
             distance += step[0]
             if (not doneFlag):
                 self.checkWall()
