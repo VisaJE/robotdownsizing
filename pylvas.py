@@ -45,8 +45,10 @@ class Pylvas_solver:
     def step_backwards(self):
         move_backwards(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.last_move)
         if self.bumped_right:
+            print("right")
             turn_left(self.left_motor,self.right_motor,10)
         if self.bumped_left:
+            print("left")
             turn_right(self.left_motor,self.right_motor,10)
         self.bumped_left=False
         self.bumped_right=False
@@ -57,7 +59,6 @@ class Pylvas_solver:
         else:
             tmp_or=math.atan2(self.preferred[self.stage][1] - self.position[1], self.preferred[self.stage][0] - self.position[0])
         indegs=self.orientation-tmp_or/2/math.pi*360
-        print(tmp_or)
         return indegs
 
     def calculate_distance(self):
