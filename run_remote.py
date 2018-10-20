@@ -1,4 +1,5 @@
 from remote import *
 
-remote=Remote
+
+remote=Remote()
 remote.inputLoop()
