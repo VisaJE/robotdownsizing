@@ -35,10 +35,6 @@ class LineFollower:
 
             distance = us.value() // 10 
 
-            if distance <= 5: 
-                mm.run_timed(time_sp=600, speed_sp=+150, stop_action="hold").wait()
-                mm.run_timed(time_sp=600, speed_sp=-150, stop_action="hold").wait()
-
             error = target_value - cs.value()
             integral += (error * dt)
             derivative = (error - previous_error) / dt
