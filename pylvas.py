@@ -12,10 +12,10 @@ class Pylvas_solver:
     bumped_left=False
     bumped_right=False
     def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left):
-        left_motor=self.left_motor
-        right_motor=self.right_motor
-        touch_sensor_left=self.touch_sensor_left
-        touch_sensor_right=self.touch_sensor_right
+        self.left_motor=left_motor
+        self.right_motor=right_motor
+        self.touch_sensor_left=touch_sensor_left
+        self.touch_sensor_right=touch_sensor_right
 
     def execute(self):
         while not_done:
