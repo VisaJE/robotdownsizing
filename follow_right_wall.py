@@ -5,7 +5,7 @@ from ev3dev.ev3 import *
 class FollowRight:
     doneFlag = False
     driven = 0
-    wallUsPadding = 20
+    wallUsPadding = 10
     def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left, us_sensor):
         self.left_motor=left_motor
         self.right_motor=right_motor
@@ -25,11 +25,11 @@ class FollowRight:
             self.findWall()
         elif found[1]:
             print("Left hit")
-            move_backwards(self.left_motor, self.right_motor, 5)
+            move_backwards(self.left_motor, self.right_motor, 4)
             turn_left(self.left_motor, self.right_motor, 70)
         elif found[2]:
             print("right hit")
-            move_backwards(self.left_motor, self.right_motor, 3)
+            move_backwards(self.left_motor, self.right_motor, 2)
             turn_left(self.left_motor, self.right_motor, 20)
         elif found[3] <= usDist:
             print("Us dist reached")
@@ -64,8 +64,8 @@ class FollowRight:
         self.doneFlag = False
         self.initial_turn()
         self.findWall()
-        while(not doneFlag):
+        while(not self.doneFlag):
             step = moveUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=20, usDist=self.wallUsPadding)
             self.driven += step[0]
-            if (not doneFlag):
+            if (not self.doneFlag):
                 self.checkWall()
