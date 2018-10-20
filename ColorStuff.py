@@ -26,7 +26,7 @@ class ColorStuff:
         return self.RGBColor(r, g, b)
 
     def getDistance(self, color1, color2):
-        return sqrt(pow(color1['r']-color2['r'], 2) + pow(color1['g']-color2['g'],2) + pow(color1['b']-color2['b'], 2))
+        return sqrt(pow(color1.r-color2.r, 2) + pow(color1.g-color2.g,2) + pow(color1.b-color2.b, 2))
 
     def getClosestKnown(self, color1):
         dists = zip(self.knownColors.items(), map((lambda x: self.getDistance(color1, x[1]) ), self.knownColors.items() ))
@@ -62,10 +62,12 @@ class ColorStuff:
         for i in range(9):
             sleep(0.1)
             newCol = self.getColorH()
-            for c in ['r', 'g', 'b']:
-                color[c] = color[c] + newCol[c]
-        for c in ['r', 'g', 'b']:
-            color[c] /= 10
+            color.r = color.r + newCol.r
+            color.g = color.g + newCol.g
+            color.b = color.b + newCol.b
+        color.r = color.r /10
+        color.g = color.g /10
+        color.b = color.b /10
 
     def findColorFromRight(self, name):
         colors = [getAvrColor()]
