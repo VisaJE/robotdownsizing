@@ -52,9 +52,12 @@ class Linefollower:
             
             elif(moveright):
                  left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                 right_motor.run_timed(time_sp=self.run_time, speed_sp=0.3*self.speed, stop_action='brake')
             
             elif(moveleft): 
                 right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                
+                 left_motor.run_timed(time_sp=self.run_time, speed_sp=0.3*self.speed, stop_action='brake')
                 #print("liiku oikealle")
     
             if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
