@@ -44,8 +44,8 @@ class Linefollower:
                     right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                     left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
                 else:
-                left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                    left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
                 #print("käänny vasemmalle")
             elif(self.on_dark):
                 #move right
