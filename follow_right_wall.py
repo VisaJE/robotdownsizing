@@ -19,6 +19,7 @@ class FollowRight:
         print("Finding wall")
         found = moveWithUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=40, usDist=self.wallUsPadding)
         self.driven += found[0]
+        print('Us now {}'.format(self.us_sensor.value()))
         if found[0]+3 >= self.driven:
             print("Not found yet")
             self.initial_turn()
@@ -65,7 +66,7 @@ class FollowRight:
         self.initial_turn()
         self.findWall()
         while(not self.doneFlag):
-            step = moveUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=20, usDist=self.wallUsPadding)
+            step = moveWithUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=20, usDist=self.wallUsPadding)
             self.driven += step[0]
             if (not self.doneFlag):
                 self.checkWall()
