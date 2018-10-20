@@ -6,7 +6,7 @@ class Pylvas_solver:
     not_done=True
     position=[75,-10]
     orientation=90
-    preferred=[[75,10],[117,35], [70,75], [135,95], [130,135], [75,140], [75, 170]]
+    preferred=[[75,10],[120,35], [70,75], [135,95], [130,135], [75,140], [75, 170]]
     stage=0
     last_moves=0
     bumped_left=False
@@ -69,8 +69,8 @@ class Pylvas_solver:
             turn_right(self.left_motor,self.right_motor,degree)
         self.bumped_left=False
         self.bumped_right=False
-        self.position[0]+=math.cos(self.orientation/360*2*math.pi)*(self.last_moves- dist)
-        self.position[1]+=math.sin(self.orientation/360*2*math.pi)*(self.last_moves-dist)
+        self.position[0]+=math.cos(self.orientation/360*2*math.pi)*(self.last_moves-1.5*dist)
+        self.position[1]+=math.sin(self.orientation/360*2*math.pi)*(self.last_moves-1.5*dist)
         return
 
     def fix_position(self):
