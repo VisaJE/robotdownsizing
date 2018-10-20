@@ -8,7 +8,7 @@ class Linefollower:
     def __init__(self, cl, left_motor, right_motor):
         self.on_dark=True
         self.on_light=False
-        #cl.mode='COL-REFLECT'
+        cl.mode='COL-REFLECT'
         self.last_darks = []
         self.side_of_line = True # False if left, True if right
         self.speed = 200
