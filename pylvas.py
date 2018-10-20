@@ -52,9 +52,9 @@ class Pylvas_solver:
         self.bumped_right=False
 
     def find_orientation(self):
-            tmp_or=math.atan((self.position[1]-self.preferred[stage][1])/(self.position[0]-self.preferred[stage][0]))
+            tmp_or=math.atan((self.position[1]-self.preferred[self.stage][1])/(self.position[0]-self.preferred[self.stage][0]))
             indegs=self.orientation-tmp_or/2/math.Pi*360
             return indegs
 
     def calculate_distance(self):
-        return math.sqrt(math.pow(self.position[1]-self.preferred[stage][1],2)+math.pow(self.position[0]-self.preferred[stage][0],2))
+        return math.sqrt(math.pow(self.position[1]-self.preferred[self.stage][1],2)+math.pow(self.position[0]-self.preferred[self.stage][0],2))
