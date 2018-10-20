@@ -35,7 +35,6 @@ while True:
 		state = 2
 	elif state == 2:
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
-		state = 3
 	elif state == 3:
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
 		state = 4
