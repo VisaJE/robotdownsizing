@@ -17,20 +17,20 @@ def turn_right(left_motor,right_motor,degrees=90):
 
 
 
-def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=-500):
+def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=10,speed=500):
     c = 10
     mov = 0
     bumped_right=False
     bumped_left=False
     epsilon=1
-    while not (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed) and mov < distance:
+    while (not (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed)) and mov < distance:
         if mov + epsilon < distance:
-            left_motor.run_timed(speed_sp=speed, time_sp=c*epsilon)
-            right_motor.run_timed(speed_sp=speed, time_sp=c*epsilon)
+            left_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)
+            right_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)
             mov += epsilon
         else:
-            left_motor.run_timed(speed_sp=speed, time_sp=c*(distance-mov))
-            right_motor.run_timed(speed_sp=speed, time_sp=c*(distance-mov))
+            left_motor.run_timed(speed_sp=-speed, time_sp=c*(distance-mov))
+            right_motor.run_timed(speed_sp=-speed, time_sp=c*(distance-mov))
             mov = distance
         sleep(c*epsilon)
     bumped_right=touch_sensor_right.is_pressed
