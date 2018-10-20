@@ -37,13 +37,13 @@ class Remote:
             elif inp == 'pylvas':
                 position=[75,0]
                 preferred=[[75,20],[130,25], [135,50], [75,70], [75,75], [135,95], [130,135], [75,140], [75, 170]]
-                solver=Pylvas_solver(lm,rm,touch_sensor_right,touch_sensor_left,position,preferred)
+                solver=Pylvas_solver(self.lm,self.rm,self.touch_sensor_right,self.touch_sensor_left,position,preferred)
                 solver.execute()
             elif inp == 'block1':
-                solver=Block_solver(lm,rm,touch_sensor_right,touch_sensor_left)
+                solver=Block_solver(self.lm,self.rm,self.touch_sensor_right,self.touch_sensor_left)
                 solver.execute1()
             elif inp == 'block2':
-                solver=Block_solver(lm,rm,touch_sensor_right,touch_sensor_left)
+                solver=Block_solver(self.lm,self.rm,self.touch_sensor_right,self.touch_sensor_left)
                 solver.execute2()
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
