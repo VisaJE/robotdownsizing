@@ -1,5 +1,6 @@
 import ev3dev.ev3 as ev3
 from time import sleep
+import math
 
 def turn_left(left_motor,right_motor,degrees=90, flag=1): # flag=1 turns left, -1 turns right
     time = 60+math.abs(degrees)*540/45
