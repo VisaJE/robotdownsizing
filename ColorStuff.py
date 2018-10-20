@@ -39,9 +39,9 @@ class ColorStuff:
         trimLeft = colors.copy()
         trimRight = colors.copy()
         n = len(colors)
-        trimRight[1] = reduce((lambda x, y): (x[0]* (y[0]*1.0/(n-1), x[1]* (y[1]*1.0/(n-1), x[2]* (y[2]*1.0/(n-1))))))
+        trimRight[1] = reduce((lambda x, y: (x[0]* (y[0]*1.0/(n-1), x[1]* (y[1]*1.0/(n-1), x[2]* (y[2]*1.0/(n-1)))))))
         for ind in range(1, n-1):
-            for (i in ('r', 'g', 'b')):
+            for i in ('r', 'g', 'b'):
                 trimLeft[ind][i] = trimLeft[ind-1][i]*1.0*ind/(ind+1)+trimLeft[ind][i]*1.0/(ind+1)
                 trimRight[ind+1][i] = (trimRight[ind][i]*(n-ind) - colors[ind][i])/(n-ind-1)
         trimLeft = range(n).map(lambda a: getDistance(trimLeft[a], trimRight[a]))
@@ -60,9 +60,9 @@ class ColorStuff:
         for i in range(9):
             sleep(0.1)
             newCol = getColorH()
-            for (c in ['r', 'g', 'b']):
+            for c in ['r', 'g', 'b']:
                 color[c] = color[c] + newCol[c]
-        for (c in ['r', 'g', 'b']):
+        for c in ['r', 'g', 'b']:
             color[c] /= 10
 
     def findColorFromRight(name):
