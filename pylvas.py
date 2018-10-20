@@ -57,7 +57,7 @@ class Pylvas_solver:
     def fix_orientation(self):
         move_backwards(self.left_motor,self.right_motor, distance = 10)
 
-        degree = 5
+        degree = 30
         if self.bumped_right:
             print("turning left")
             turn_left(self.left_motor,self.right_motor,degree)
