@@ -6,7 +6,7 @@ class Pylvas_solver:
     not_done=True
     position=[75,0]
     orientation=90
-    preferred=[[75,15],[105,30], [75,75]]
+    preferred=[[75,20],[117,28], [70,75], [135,95], [130,135], [75,140], [75, 170]]
     stage=0
     last_moves=0
     bumped_left=False
@@ -58,7 +58,7 @@ class Pylvas_solver:
         dist=10
         move_backwards(self.left_motor,self.right_motor, distance =dist)
 
-        degree = 30
+        degree = 20
         if self.bumped_right:
             print("turning left")
             turn_left(self.left_motor,self.right_motor,degree)
