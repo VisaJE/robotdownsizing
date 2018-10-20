@@ -6,7 +6,7 @@ class Pylvas_solver:
     not_done=True
     position=[75,0]
     orientation=90
-    preferred=[[75,15],[105,35], [110,55],[75,80]]
+    preferred=[[75,15],[105,30], [75,75]]
     stage=0
     last_moves=0
     bumped_left=False
