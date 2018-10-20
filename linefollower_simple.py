@@ -11,7 +11,7 @@ class Linefollower:
         self.on_light=False
         cl.mode='COL-REFLECT'
         self.last_darks = []
-        
+      
         self.side_of_line = False # False if right, True if left
         self.speed = 200
         self.run_time = 50
@@ -62,6 +62,7 @@ class Linefollower:
     
             if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
                 print("COLLISION! MOVING BACKWARDS")
+                Sound.speak('Perkele',espeak_opts='-a 200 -v finnish').wait()
                 move_backwards(left_motor, right_motor,distance=3)
     
             if (len(self.last_darks) > self.buffer_size):
@@ -70,14 +71,12 @@ class Linefollower:
             sleep(self.run_time/1000)            
 
 
-         
-
 cl=ColorSensor()
-
 left_motor=LargeMotor('outB')
 right_motor=LargeMotor('outA')
 touch_sensor_left=TouchSensor('in3')
 touch_sensor_right=TouchSensor('in2')
+
 lf = Linefollower(cl, left_motor, right_motor,touch_sensor_left, touch_sensor_right)
 lf.line_following_on = True
 
@@ -88,10 +87,3 @@ lf.buffer_size = int(input("BUFFERSIZE: "))
 
 while(True):
     lf.follow_line()
-
-
-
-
-
-
-
