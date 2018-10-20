@@ -1,6 +1,6 @@
 from ev3dev.ev3 import *
 from time import sleep
-import ColorStuff
+from ColorStuff import ColorStuff
 
 #lm = LargeMotor('outB')
 #rm = LargeMotor('outA')
