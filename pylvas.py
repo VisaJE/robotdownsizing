@@ -63,15 +63,14 @@ class Pylvas_solver:
 
         degree = 20
         if self.bumped_right:
-            print("turning left")
             turn_left(self.left_motor,self.right_motor,degree)
         elif self.bumped_left:
-            print("turning right")
             turn_right(self.left_motor,self.right_motor,degree)
         self.bumped_left=False
         self.bumped_right=False
         self.position[0]+=math.cos(self.orientation/360*2*math.pi)*(self.last_moves-1.5*dist)
         self.position[1]+=math.sin(self.orientation/360*2*math.pi)*(self.last_moves-1.5*dist)
+        print("Position: ", position)
         return
 
     def fix_position(self):

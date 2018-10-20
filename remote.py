@@ -10,6 +10,8 @@ class Remote:
         self.lm = LargeMotor('outB')
         self.rm = LargeMotor('outA')
         self.mm = Motor('outC')
+        self.touch_sensor_right=TouchSensor('in2')
+        self.touch_sensor_left=TouchSensor('in3')
     def inputLoop(self):
         print("remote start")
         inp = ''
@@ -30,5 +32,21 @@ class Remote:
                 self.mm.run_timed(time_sp=250, speed_sp=-450, stop_action='brake')
             elif inp == 't':
                 self.mm.run_timed(time_sp=250, speed_sp=450, stop_action='brake')
+            elif inp == 'pylvas':
+                position=[75,-10]
+                preferred=[[75,20],[130,45], [135,50], [75,70], [75,75], [135,95], [130,135], [75,140], [75, 170]]
+                solver=Pylvas_solver(lm,rm,touch_sensor_right,touch_sensor_left,position,preferred)
+                solver.execute()
+            elif inp == 'block1':
+                solver=Block_solver(lm,rm,touch_sensor_right,touch_sensor_left)
+                solver.execute()
+            elif inp == 'block2':
+                solver=Block_solver(lm,rm,touch_sensor_right,touch_sensor_left)
+                solver.execute()
+            elif inp == 'perkele':
+                Sound.speak('p e r r k e l e').wait
+
+            elif inp =='start':
+
             sleep(0.25)
         print("remote exit")

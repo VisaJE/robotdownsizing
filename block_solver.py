@@ -10,9 +10,11 @@ class Block_solver:
         self.touch_sensor_right=touch_sensor_right
 
 
-    def execute():
+    def execute1():
         start=[0,0]
         preferred=[[20,100],[70,170],[55,320]]
         solver1=Pylvas_solver(self.left_motor,self.right_motor,self.touch_sensor_right,self.touch_sensor_left,start,preferred)
         solver1.execute()
-        ##pls help me
+
+    def execute2()
+        start=[0,0}
