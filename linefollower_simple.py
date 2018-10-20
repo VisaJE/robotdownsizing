@@ -56,7 +56,7 @@ class Linefollower:
                 #print("liiku vasemmalle")
             elif(self.on_light):
                 #move left
-                if (side_of_line):
+                if (self.side_of_line):
                     right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                 else:
                     left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')    
