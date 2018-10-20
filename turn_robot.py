@@ -23,8 +23,8 @@ def move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distanc
             right_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)
             mov += epsilon
         else:
-            left_motor.run_timed(speed_sp=-speed, time_sp=c*(distance-mov))
-            right_motor.run_timed(speed_sp=-speed, time_sp=c*(distance-mov))
+            left_motor.run_timed(speed_sp=-speed, time_sp=c*(pseudo_distance-mov))
+            right_motor.run_timed(speed_sp=-speed, time_sp=c*(pseudo_distance-mov))
             mov = pseudo_distance
         sleep(c*epsilon/1000)
     bumped_right=touch_sensor_right.is_pressed
