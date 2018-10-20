@@ -9,7 +9,7 @@ tsl = TouchSensor('in4')
 tsr = TouchSensor('in2')
 
 cs = ColorStuff()
-s = UltrasonicSensor() 
+us = UltrasonicSensor() 
 
 us.mode='US-DIST-CM'
 
