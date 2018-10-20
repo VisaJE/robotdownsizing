@@ -15,24 +15,24 @@ class ColorStuff:
         return self.getColor(self.getColorH())
 
     def getColorH(self):
-        oldMode = cl.mode
-        cl.mode='RGB-RAW'
-        r = cl.value(0)
-        g = cl.value(1)
-        b = cl.value(2)
-        c1.mode = oldMode
+        oldMode = self.cl.mode
+        self.cl.mode='RGB-RAW'
+        r = self.cl.value(0)
+        g = self.cl.value(1)
+        b = self.cl.value(2)
+        self.cl.mode = oldMode
         return RGBColor(r, g, b)
 
     def getDistance(self, color1, color2):
         return sqrt(pow(color1['r']-color2['r'], 2) + pow(color1['g']-color2['g'],2) + pow(color1['b']-color2['b'], 2))
 
     def getClosestKnown(self, color1):
-        dists = zip(knownColors.items(), knownColors.items().map(lambda x: getDistance(color1, x[1])))
+        dists = zip(self.knownColors.items(), self.knownColors.items().map(lambda x: getDistance(color1, x[1])))
         return min(dists, key=lambda t: t[1])
 
     def getColor(self, color):
         found = self.getClosestKnown(color)
-        return (found[0][0], found[1] < differenceThreshold)
+        return (found[0][0], found[1] < self.differenceThreshold)
 
 
     def learnColorRight(self, colors, name):
@@ -44,22 +44,22 @@ class ColorStuff:
             for i in ('r', 'g', 'b'):
                 trimLeft[ind][i] = trimLeft[ind-1][i]*1.0*ind/(ind+1)+trimLeft[ind][i]*1.0/(ind+1)
                 trimRight[ind+1][i] = (trimRight[ind][i]*(n-ind) - colors[ind][i])/(n-ind-1)
-        trimLeft = range(n).map(lambda a: getDistance(trimLeft[a], trimRight[a]))
+        trimLeft = range(n).map(lambda a: self.getDistance(trimLeft[a], trimRight[a]))
         trimLeft[0] = 0
         trimLeft[n-1] = 0
         found = max(zip(trimLeft, range(n)), key= lambda a: a[0])
         print("Found biggest difference in avr color at index {}\n".format(found))
-        if trimLeft[found] > differenceThreshold:
+        if trimLeft[found] > self.differenceThreshold:
             knownColors[name] = trimRight[found]
             return True
         else:
             return False
 
     def getAvrColor(self):
-        color = getColorH()
+        color = self.getColorH()
         for i in range(9):
             sleep(0.1)
-            newCol = getColorH()
+            newCol = self.getColorH()
             for c in ['r', 'g', 'b']:
                 color[c] = color[c] + newCol[c]
         for c in ['r', 'g', 'b']:
