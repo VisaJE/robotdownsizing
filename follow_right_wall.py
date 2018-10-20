@@ -21,8 +21,8 @@ class FollowRight:
         self.driven += found[0]
         if found[0]+3 >= self.driven:
             print("Not found yet")
-            initial_turn(self)
-            findWall(self)
+            self.initial_turn()
+            self.findWall()
         elif found[1]:
             print("Left hit")
             move_backwards(self.left_motor, self.right_motor, 5)
