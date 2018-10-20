@@ -16,5 +16,6 @@ class Block_solver:
         solver1=Pylvas_solver(self.left_motor,self.right_motor,self.touch_sensor_right,self.touch_sensor_left,start,preferred)
         solver1.execute()
 
-    def execute2()
-        start=[0,0}
+    def execute2():
+        start=[0,0]
+        return
