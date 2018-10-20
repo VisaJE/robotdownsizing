@@ -3,6 +3,8 @@ from time   import sleep
 from collections import namedtuple
 from functools import reduce
 from math import *
+from block_solver import *
+from pylvas import *
 import curses
 
 class Remote:
@@ -45,8 +47,5 @@ class Remote:
                 solver.execute()
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
-
-            elif inp =='start':
-
             sleep(0.25)
         print("remote exit")
