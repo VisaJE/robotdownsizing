@@ -40,12 +40,12 @@ def move_backwards(left_motor, right_motor, touch_sensor_left, touch_sensor_righ
     pseudo_distance = 1.24*distance
     while mov < pseudo_distance:
         if mov + epsilon < pseudo_distance:
-            left_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)
-            right_motor.run_timed(speed_sp=-speed, time_sp=c*epsilon)
+            left_motor.run_timed(speed_sp=speed, time_sp=c*epsilon)
+            right_motor.run_timed(speed_sp=speed, time_sp=c*epsilon)
             mov += epsilon
         else:
-            left_motor.run_timed(speed_sp=-speed, time_sp=c*(pseudo_distance-mov))
-            right_motor.run_timed(speed_sp=-speed, time_sp=c*(pseudo_distance-mov))
+            left_motor.run_timed(speed_sp=speed, time_sp=c*(pseudo_distance-mov))
+            right_motor.run_timed(speed_sp=speed, time_sp=c*(pseudo_distance-mov))
             mov = pseudo_distance
         sleep(c*epsilon/1000)
     return
