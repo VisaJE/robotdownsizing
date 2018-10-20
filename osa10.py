@@ -23,7 +23,7 @@ while True:
 		state = 1
 	if cs.getColorFUCK()[0] == 'changeRed':
 		state = 3
-	if state > 3 and cs.getColorFUCK()[0] == 'ground':
+	if state >= 3 and cs.getColorFUCK()[0] == 'ground':
 		print("DONE")
 		quit()
 	if state == 0:
@@ -35,9 +35,10 @@ while True:
 		state = 2
 	elif state == 2:
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
+		state = 3
 	elif state == 3:
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
-		state = 4
+		lm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
 	elif state == 4:
 		lm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
 		rm.run_timed(time_sp=250, speed_sp=-400, stop_action='brake')
