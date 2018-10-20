@@ -70,6 +70,6 @@ class FollowRight:
         while(not self.doneFlag):
             step = moveWithUS(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, self.us_sensor, distance=20, usDist=self.wallUsPadding)
             self.driven += step[0]
-            checkStopFlag(self, stopAt, stopValue)
+            self.checkStopFlag(stopAt, stopValue)
             if (not self.doneFlag):
                 self.checkWall()
