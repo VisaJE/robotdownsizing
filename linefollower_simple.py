@@ -10,7 +10,7 @@ class Linefollower:
         self.on_light=False
         #cl.mode='COL-REFLECT'
         self.last_darks = [False, True]
-        self.side_of_line = True # False if left, True if right
+        self.side_of_line = False # False if left, True if right
         self.speed = 600
         self.run_time = 50
         self.buffer_size = 12
@@ -81,7 +81,7 @@ lf.line_following_on = True
 #rampille
 #mustalle
 
-while (cs.getColorFUCK()[0] != 'changeRed'):
+while (cs.getColorFUCK()[0] != 'dimRed'):
     lf.follow_line()
     
 #pylväspaskaan

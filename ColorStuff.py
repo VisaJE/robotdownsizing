@@ -14,7 +14,9 @@ class ColorStuff:
 
     # Returns tuple (seen color name, is the color within the threshold)
     def getColorFUCK(self):
-        return self.getColor(self.getColorH())
+        res = self.getColor(self.getColorH())
+        print(res)
+        return res
 
     def getColorH(self):
         oldMode = self.cl.mode
@@ -23,7 +25,7 @@ class ColorStuff:
         g = self.cl.value(1)
         b = self.cl.value(2)
         self.cl.mode = oldMode
-        print("mitattu " + str(r) + " " + str(g) + " " + str(b))
+        #print("mitattu " + str(r) + " " + str(g) + " " + str(b))
         return self.RGBColor(r, g, b)
 
     def getDistance(self, color1, color2):
