@@ -4,14 +4,15 @@ from ev3dev.ev3 import *
 
 class Pylvas_solver:
     not_done=True
-    position=[75,-10]
     orientation=90
-    preferred=[[75,20],[135,45], [75,73], [135,95], [130,135], [75,140], [75, 170]]
     stage=0
     last_moves=0
     bumped_left=False
     bumped_right=False
-    def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left):
+    def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left,position,preferred):
+        self.preferred=preferred
+        self.position=position
+        self.position=position
         self.left_motor=left_motor
         self.right_motor=right_motor
         self.touch_sensor_left=touch_sensor_left
