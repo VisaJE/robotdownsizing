@@ -6,7 +6,7 @@ from functools import reduce
 class ColorStuff:
     def __init__(self):
         self.cl = ColorSensor()
-        self.RGBColor = namedtuple('r', 'g', 'b')
+        self.RGBColor = namedtuple('RGBColor', 'r g b')
         self.knownColors = {'null': RGBColor(0, 0, 0), 'changeRed': RGBColor(190, 210, 270), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(160, 230, 210)}
         self.differenceThreshold = 40
     
