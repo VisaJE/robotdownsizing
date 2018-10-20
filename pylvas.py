@@ -26,7 +26,7 @@ class Pylvas_solver:
 
     def step_forward(self):
         orientation_change=self.find_orientation()
-        orientation+=orientation_change
+        self.orientation+=orientation_change
         print("Orientation change: ", orientation_change)
         if orientation_change>0 :
             turn_left(self.left_motor,self.right_motor,orientation_change)
