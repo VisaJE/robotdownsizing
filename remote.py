@@ -6,7 +6,7 @@ from math import *
 from block_solver import *
 from pylvas import *
 import curses
-from linefollower_simple import LineFollower
+from linefollower_simple import Linefollower
 from ColorStuff import ColorStuff
 
 class Remote:
@@ -51,7 +51,7 @@ class Remote:
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
             elif inp == 'follow':
-            	lf = LineFollower(cs)
+            	lf = Linefollower(cs)
             	lf.lineLoop()
             sleep(0.25)
         print("remote exit")
