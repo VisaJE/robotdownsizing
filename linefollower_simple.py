@@ -10,6 +10,10 @@ class Linefollower:
         self.on_dark=True
         self.on_light=False
         cl.mode='COL-REFLECT'
+        self.left_motor = left_motor
+        self.right_motor = right_motor
+        self.touch_sensor_left = touch_sensor_left
+        self.touch_sensor_right = touch_sensor_right
         self.last_darks = []
         self.cl = cl
         self.side_of_line = False # False if right, True if left
@@ -38,8 +42,8 @@ class Linefollower:
             moveleft = (self.on_light and self.side_of_line) or (self.on_dark and not self.side_of_line)
     
             if (turnright):
-                move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=7)
-                turn_right(left_motor, right_motor,degrees=60)
+                move(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, distance=7)
+                turn_right(self.left_motor, self.right_motor,degrees=60)
                 #turn right
                 #left_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
                 #right_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
@@ -47,33 +51,33 @@ class Linefollower:
                 #right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
                 
             elif (turnleft):
-                right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                self.left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
             
             elif(moveright):
-                 left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                 right_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
+                 self.left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                 self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
             
             elif(moveleft): 
-                right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                 
-                left_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
+                self.left_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
 
                 #print("liiku oikealle")
     
-            if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
+            if (self.touch_sensor_left.is_pressed or self.touch_sensor_right.is_pressed):
                 print("COLLISION! MOVING BACKWARDS")
                 #Sound.speak('Perkele',espeak_opts='-a 200 -v finnish').wait()
-                move_backwards(left_motor, right_motor,distance=5)
-                if (touch_sensor_right.is_pressed):
-                    move_backwards(left_motor, right_motor,distance=5)
-                    right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                move_backwards(self.left_motor, self.right_motor,distance=5)
+                if (self.touch_sensor_right.is_pressed):
+                    move_backwards(self.left_motor, self.right_motor,distance=5)
+                    self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                     sleep(self.run_time/1000)
-                    right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
-                    left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    self.right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    self.left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
                     sleep(3*self.run_time/1000)
                 else:
-                    move_backwards(left_motor, right_motor,distance=5)
+                    move_backwards(self.left_motor, self.right_motor,distance=5)
             if (len(self.last_darks) > self.buffer_size):
                 self.last_darks.pop(0)
             #print("kierros")
