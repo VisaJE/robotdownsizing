@@ -33,9 +33,9 @@ class Linefollower:
     
         if (self.line_following_on):
         
-            self.on_light=cl.value()>=25
-            self.on_dark=cl.value()<25
-            print(cl.value())
+            self.on_light=self.cl.value()>=25
+            self.on_dark=self.cl.value()<25
+            print(self.cl.value())
     
             if (self.on_dark):
                 self.last_darks.append(True)
