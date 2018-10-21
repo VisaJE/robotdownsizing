@@ -84,7 +84,7 @@ class Linefollower:
 
     def lineLoop(self):
         while(self.cs.getColorFUCK()[0] != 'changeRed'):
-            lf.follow_line()
+            self.follow_line()
 
 
 
