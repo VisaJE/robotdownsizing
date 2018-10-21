@@ -66,10 +66,13 @@ class Linefollower:
                 #Sound.speak('Perkele',espeak_opts='-a 200 -v finnish').wait()
                 move_backwards(left_motor, right_motor,distance=5)
                 if (touch_sensor_right.is_pressed):
+                    move_backwards(left_motor, right_motor,distance=5)
                     right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                     sleep(self.run_time/1000)
                     right_motor.run_timed(time_sp=10*self.run_time, speed_sp=self.speed, stop_action='brake')
                     left_motor.run_timed(time_sp=10*self.run_time, speed_sp=self.speed, stop_action='brake')
+                else:
+                    move_backwards(left_motor, right_motor,distance=5)
             if (len(self.last_darks) > self.buffer_size):
                 self.last_darks.pop(0)
             #print("kierros")
