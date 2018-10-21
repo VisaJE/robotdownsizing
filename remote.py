@@ -76,6 +76,14 @@ class Remote:
             elif inp == 'forward':
                 dist = int(input())
                 move(lm, rm, touch_sensor_left, touch_sensor_right, dist)
-
+            elif inp=='backwards':
+                dist = int(input())
+                move_backwards(lm, rm, distance=dist)
+            elif inp=='left':
+                angle=int(input())
+                turn_left(lm, rm,degrees=angle)
+            elif inp=='right':
+                angle=int(input())
+                turn_right(lm, rm, degrees=angle)
             sleep(0.25)
         print("remote exit")
