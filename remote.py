@@ -69,7 +69,7 @@ class Remote:
             elif inp == 'pyori':
                 pp = Pyoriva()
                 pp.run()
-           elif inp == 'learn':
+            elif inp == 'learn':
                 name=input()
                 colorS.learnColor(name)
             elif inp == 'forward':
