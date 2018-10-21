@@ -90,7 +90,7 @@ def start(self, color_stuff, stop_color='acasc'):
             if color_stuff.getAvrColorFUCK() == stop_color:
                 doing=False
 
-
+"""
 cl=ColorSensor()
 left_motor=LargeMotor('outB')
 right_motor=LargeMotor('outA')
@@ -106,4 +106,4 @@ lf.run_time = int(input("RUNTIME: "))
 lf.buffer_size = int(input("BUFFERSIZE: "))
 
 while(True):
-    lf.follow_line()
+    lf.follow_line()"""

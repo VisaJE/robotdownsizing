@@ -20,6 +20,7 @@ class Remote:
         self.touch_sensor_right=TouchSensor('in2')
         self.touch_sensor_left=TouchSensor('in3')
         self.cs = cs
+        self.line_follower=Linefollower(cs, lm, rm,touch_sensor_left, touch_sensor_right)
     def inputLoop(self):
         print("remote start")
         inp = ''
@@ -64,8 +65,8 @@ class Remote:
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
             elif inp == 'follow':
-                lf = Linefollower(self.cs)
-                lf.lineLoop()
+                stop=input()
+                line_follower.start(colorS, stop_color=stop)
             elif inp == 'pyori':
                 pp = Pyoriva()
                 pp.run()
