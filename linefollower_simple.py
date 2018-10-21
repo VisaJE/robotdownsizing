@@ -79,20 +79,20 @@ class Linefollower:
             #print("kierros")
             sleep(self.run_time/1000)            
 
-def start(self, color_stuff, stop_color='acasc'):
-    self.speed = int(input("SPEED: "))
-    self.run_time = int(input("RUNTIME: "))
-    self.buffer_size = int(input("BUFFERSIZE: "))
-    self.line_following_on=True
-    doing=True
-    try:
-        while(doing):
-            self.follow_line()
-            if color_stuff.getColorFUCK() == stop_color:
-                if color_stuff.getAvrColorFUCK() == stop_color:
-                    doing=False
-    except KeyboardInterrupt:
-        print("Interrupted")
+    def start(self, color_stuff, stop_color='acasc'):
+        self.speed = int(input("SPEED: "))
+        self.run_time = int(input("RUNTIME: "))
+        self.buffer_size = int(input("BUFFERSIZE: "))
+        self.line_following_on=True
+        doing=True
+        try:
+            while(doing):
+                self.follow_line()
+                if color_stuff.getColorFUCK() == stop_color:
+                    if color_stuff.getAvrColorFUCK() == stop_color:
+                        doing=False
+        except KeyboardInterrupt:
+            print("Interrupted")
 
 """
 cl=ColorSensor()
