@@ -62,10 +62,10 @@ class Remote:
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
             elif inp == 'follow':
-            	lf = Linefollower(self.cs)
-            	lf.lineLoop()
-           	elif inp == 'pyori':
-            	pp = Pyoriva()
-            	pp.run()
+                lf = Linefollower(self.cs)
+                lf.lineLoop()
+            elif inp == 'pyori':
+                pp = Pyoriva()
+                pp.run()
             sleep(0.25)
         print("remote exit")
