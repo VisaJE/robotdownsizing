@@ -13,6 +13,7 @@ from turn_robot import *
 
 class Remote:
     def __init__(self, cs):
+    	self.colorS = ColorStuff(cs)
         self.lm = LargeMotor('outB')
         self.rm = LargeMotor('outA')
         self.mm = Motor('outC')
@@ -73,7 +74,7 @@ class Remote:
                 name=input()
                 colorS.learnColor(name)
             elif inp == 'forward':
-                dist = (int)input()
+                dist = int(input())
                 move(lm, rm, touch_sensor_left, touch_sensor_right, dist)
 
             sleep(0.25)
