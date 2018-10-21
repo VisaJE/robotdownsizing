@@ -67,5 +67,8 @@ class Remote:
             elif inp == 'pyori':
                 pp = Pyoriva()
                 pp.run()
+           elif inp == 'learn':
+                colorS.learnColor('Learned')
+
             sleep(0.25)
         print("remote exit")
