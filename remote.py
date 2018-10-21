@@ -33,6 +33,16 @@ class Remote:
             elif inp == 'w':
                 self.lm.run_timed(time_sp=250, speed_sp=-450, stop_action='brake')
                 self.rm.run_timed(time_sp=250, speed_sp=-450, stop_action='brake')
+            elif inp == 'j':
+                self.rm.run_timed(time_sp=250, speed_sp=-900, stop_action='brake')
+            elif inp == 'k':
+                self.lm.run_timed(time_sp=250, speed_sp=900, stop_action='brake')
+                self.rm.run_timed(time_sp=250, speed_sp=900, stop_action='brake')
+            elif inp == 'l':
+                self.lm.run_timed(time_sp=250, speed_sp=-900, stop_action='brake')
+            elif inp == 'i':
+                self.lm.run_timed(time_sp=250, speed_sp=-900, stop_action='brake')
+                self.rm.run_timed(time_sp=250, speed_sp=-900, stop_action='brake')
             elif inp == 'r':
                 self.mm.run_timed(time_sp=250, speed_sp=-450, stop_action='brake')
             elif inp == 't':
