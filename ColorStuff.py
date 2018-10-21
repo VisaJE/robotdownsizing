@@ -5,8 +5,8 @@ from functools import reduce
 from math import *
 
 class ColorStuff:
-    def __init__(self):
-        self.cl = ColorSensor()
+    def __init__(self, cl):
+        self.cl = cl
         RGBColor = namedtuple('RGBColor', 'r g b')
         self.RGBColor = namedtuple('RGBColor', 'r g b')
         self.knownColors = {'null': RGBColor(10, 10, 10), 'changeRed': RGBColor(125, 138, 193), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(134, 163, 175), 'dimRed': RGBColor(147, 38, 193)}
