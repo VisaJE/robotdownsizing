@@ -71,6 +71,7 @@ class Linefollower:
                     sleep(self.run_time/1000)
                     right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
                     left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    sleep(3*self.run_time/1000)
                 else:
                     move_backwards(left_motor, right_motor,distance=5)
             if (len(self.last_darks) > self.buffer_size):
