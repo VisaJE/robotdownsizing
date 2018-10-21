@@ -1,5 +1,8 @@
 from remote import *
 from e3dev.ev3 import *
+from ColorStuff import ColorStuff
 
-remote=Remote()
+
+cs = ColorStuff()
+remote=Remote(cs)
 remote.inputLoop()
