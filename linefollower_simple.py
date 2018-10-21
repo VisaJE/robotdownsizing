@@ -85,11 +85,14 @@ def start(self, color_stuff, stop_color='acasc'):
     self.buffer_size = int(input("BUFFERSIZE: "))
     self.line_following_on=True
     doing=True
-    while(doing):
-        self.follow_line()
-        if color_stuff.getColorFUCK() == stop_color:
-            if color_stuff.getAvrColorFUCK() == stop_color:
-                doing=False
+    try:
+        while(doing):
+            self.follow_line()
+            if color_stuff.getColorFUCK() == stop_color:
+                if color_stuff.getAvrColorFUCK() == stop_color:
+                    doing=False
+    except KeyboardInterrupt:
+        print("Interrupted")
 
 """
 cl=ColorSensor()

@@ -19,14 +19,17 @@ class Pylvas_solver:
         self.touch_sensor_right=touch_sensor_right
 
     def execute(self):
-        while self.not_done:
-            while self.step_forward():
-                pass
-            if self.calculate_distance() > 10:
-                self.fix_orientation()
-            else:
-                self.fix_position()
-        return True
+        try:
+            while self.not_done:
+                while self.step_forward():
+                    pass
+                if self.calculate_distance() > 10:
+                    self.fix_orientation()
+                else:
+                    self.fix_position()
+            return True
+        except KeyboardInterrupt:
+           print("Interrupted") 
 
     def step_forward(self):
         if(self.stage==len(self.preferred)):
