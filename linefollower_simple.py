@@ -82,7 +82,7 @@ class Linefollower:
             sleep(self.run_time/1000)     
 
     def lineLoop(self):
-        while(self.cs.getColorFUCK()[0] != 'dimRed'):
+        while(True):
             self.follow_line()
 
 
