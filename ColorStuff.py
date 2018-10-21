@@ -82,7 +82,7 @@ class ColorStuff:
         for i in range(9):
             sleep(0.1)
             newCol = self.getColorH()
-            color.r = color.r + newCol. r
+            color.r = color.r + newCol.r
             color.g = color.g + newCol.g
             color.b = color.b + newCol.b
         color.r = color.r /10
