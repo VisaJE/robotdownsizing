@@ -1,5 +1,5 @@
 from remote import *
-from e3dev.ev3 import *
+from e3dev import *
 from ColorStuff import ColorStuff
 
 

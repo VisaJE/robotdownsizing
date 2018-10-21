@@ -64,7 +64,7 @@ class Linefollower:
             if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
                 print("COLLISION! MOVING BACKWARDS")
                 #Sound.speak('Perkele',espeak_opts='-a 200 -v finnish').wait()
-                move_backwards(left_motor, right_motor,distance=4)
+                move_backwards(left_motor, right_motor,distance=3)
     
             if (len(self.last_darks) > self.buffer_size):
                 self.last_darks.pop(0)
