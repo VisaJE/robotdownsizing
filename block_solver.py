@@ -9,7 +9,6 @@ class Block_solver:
         self.touch_sensor_left=touch_sensor_left
         self.touch_sensor_right=touch_sensor_right
 
-
     def execute1():
         start=[0,0]
         preferred=[[20,100],[70,170],[55,320]]

@@ -29,6 +29,8 @@ class Pylvas_solver:
         return True
 
     def step_forward(self):
+        if(self.stage==len(self.preferred)):
+            self.not_done=False
         orientation_change=self.find_orientation()
         self.orientation-=orientation_change
         print("Orientation change: ", orientation_change)
