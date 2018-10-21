@@ -8,6 +8,7 @@ from pylvas import *
 import curses
 from linefollower_simple import Linefollower
 from ColorStuff import ColorStuff
+from solve_pyor import Pyoriva
 
 class Remote:
     def __init__(self, cs):
@@ -63,5 +64,8 @@ class Remote:
             elif inp == 'follow':
             	lf = Linefollower(self.cs)
             	lf.lineLoop()
+           	elif inp == 'pyori':
+            	pp = Pyoriva()
+            	pp.run()
             sleep(0.25)
         print("remote exit")
