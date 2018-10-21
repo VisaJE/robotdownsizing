@@ -28,7 +28,6 @@ class Linefollower:
         self.speed = 200
         self.run_time = 50
         self.buffer_size = 4
-        self.line_following_on = False
     
     def follow_line(self):
     
@@ -83,7 +82,7 @@ class Linefollower:
             sleep(self.run_time/1000)     
 
     def lineLoop(self):
-        while(self.cs.getColorFUCK()[0] != 'changeRed'):
+        while(self.cs.getColorFUCK()[0] != 'dimRed'):
             self.follow_line()
 
 
