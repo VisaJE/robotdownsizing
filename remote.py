@@ -75,15 +75,15 @@ class Remote:
                 colorS.learnColor(name)
             elif inp == 'forward':
                 dist = int(input())
-                move(lm, rm, touch_sensor_left, touch_sensor_right, dist)
+                move(self.lm, self.rm, self.touch_sensor_left, self.touch_sensor_right, dist)
             elif inp=='backwards':
                 dist = int(input())
-                move_backwards(lm, rm, distance=dist)
+                move_backwards(self.lm, self.rm, distance=dist)
             elif inp=='left':
                 angle=int(input())
-                turn_left(lm, rm,degrees=angle)
+                turn_left(self.lm, self.rm,degrees=angle)
             elif inp=='right':
                 angle=int(input())
-                turn_right(lm, rm, degrees=angle)
+                turn_right(self.lm, self.rm, degrees=angle)
             sleep(0.25)
         print("remote exit")
