@@ -20,7 +20,7 @@ class Remote:
         self.touch_sensor_right=TouchSensor('in2')
         self.touch_sensor_left=TouchSensor('in3')
         self.cs = cs
-        self.line_follower=Linefollower(cs, lm, rm,touch_sensor_left, touch_sensor_right)
+        self.line_follower=Linefollower(self.cs, self.lm, self.rm,self.touch_sensor_left, self.touch_sensor_right)
     def inputLoop(self):
         print("remote start")
         inp = ''
