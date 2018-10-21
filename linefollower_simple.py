@@ -10,6 +10,10 @@ class Linefollower:
         self.on_dark=True
         self.on_light=False
         cl.mode='COL-REFLECT'
+        self.left_motor = left_motor
+        self.right_motor = right_motor
+        self.touch_sensor_left = touch_sensor_left
+        self.touch_sensor_right = touch_sensor_right
         self.last_darks = []
 <<<<<<< HEAD
         self.cl = cl
