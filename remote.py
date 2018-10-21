@@ -72,7 +72,7 @@ class Remote:
                 pp.run()
             elif inp == 'learn':
                 name=input()
-                colorS.learnColor(name)
+                self.colorS.learnColor(name)
             elif inp == 'forward':
                 dist = int(input())
                 move(self.lm, self.rm, self.touch_sensor_left, self.touch_sensor_right, dist)
