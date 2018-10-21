@@ -52,8 +52,7 @@ class Remote:
                 self.mm.run_timed(time_sp=250, speed_sp=450, stop_action='brake')
             elif inp == 'pylvas':
                 position=[75,0]
-                #preferred=[[75,20],[130,30], [135,50], [75,70], [75,75], [135,95], [130,135], [75,140], [75, 170]]
-                preferred=[[75,20],[130,45], [75,75], [135,120], [130,135], [75,140], [75, 170]]
+                preferred=[[75,10],[130,45], [75,70], [135,140], [130,160], [75,160], [75, 180]]
                 solver=Pylvas_solver(self.lm,self.rm,self.touch_sensor_right,self.touch_sensor_left,position,preferred)
                 solver.execute()
             elif inp == 'block1':
