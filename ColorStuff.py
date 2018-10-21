@@ -50,6 +50,11 @@ class ColorStuff:
         found = self.getClosestKnown(color)
         return (found[0][0], found[1] < self.differenceThreshold)
 
+    def learnColor(self, name):
+        col = self.getAvrColor()
+        if self.getColor(col)[1]:
+            return False
+        else knownColors[name] = col
 
     def learnColorRight(self, colors, name):
         trimLeft = colors.copy()
