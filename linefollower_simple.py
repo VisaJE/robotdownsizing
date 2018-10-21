@@ -11,7 +11,7 @@ class Linefollower:
         self.on_light=False
         cl.mode='COL-REFLECT'
         self.last_darks = []
-      
+        self.cl = cl
         self.side_of_line = False # False if right, True if left
         self.speed = 200
         self.run_time = 50
