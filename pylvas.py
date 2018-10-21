@@ -60,7 +60,7 @@ class Pylvas_solver:
     def fix_orientation(self):
         dist=10
         move_backwards(self.left_motor,self.right_motor, distance =dist)
-        degree = 20
+        degree = 10
         if self.bumped_right:
             turn_left(self.left_motor,self.right_motor,degree)
             self.orientation-=degree
