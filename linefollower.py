@@ -71,7 +71,6 @@ class Linefollower:
                     sleep(self.run_time/1000)
                     right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
                     left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
-                    sleep(3*self.run_time/1000)
                 else:
                     move_backwards(left_motor, right_motor,distance=5)
             if (len(self.last_darks) > self.buffer_size):
@@ -85,14 +84,11 @@ def start(self, color_stuff, stop_color='acasc'):
     self.buffer_size = int(input("BUFFERSIZE: "))
     self.line_following_on=True
     doing=True
-    try:
-        while(doing):
-            self.follow_line()
-            if color_stuff.getColorFUCK() == stop_color:
-                if color_stuff.getAvrColorFUCK() == stop_color:
-                    doing=False
-    except KeyboardInterrupt:
-        print("Interrupted")
+    while(doing):
+        self.follow_line()
+        if color_stuff.getColorFUCK() == stop_color:
+            if color_stuff.getAvrColorFUCK() == stop_color:
+                doing=False
 
 
 cl=ColorSensor()
