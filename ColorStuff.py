@@ -10,7 +10,7 @@ class ColorStuff:
         RGBColor = namedtuple('RGBColor', 'r g b')
         self.RGBColor = namedtuple('RGBColor', 'r g b')
         self.knownColors = {'null': RGBColor(10, 10, 10), 'changeRed': RGBColor(125, 138, 193), 'ground': RGBColor(32, 50, 35), 'tape': RGBColor(134, 163, 175), 'dimRed': RGBColor(147, 38, 193)}
-        self.differenceThreshold = 40
+        self.differenceThreshold = 28
 
     # Returns tuple (seen color name, is the color within the threshold)
     def getColorFUCK(self):
@@ -18,7 +18,14 @@ class ColorStuff:
         print(res)
         return res
 
-    def getColorH(self):
+# Returns tuple (seen color name, is the color within the threshold)
+    def getAvrColorFUCK(self):
+        col = self.getAvrColor()
+        res = self.getColor(col)
+        print(res)
+        return (res, self.getDistance(self.knownColors(res), col)) 
+
+def getColorH(self):
         oldMode = self.cl.mode
         self.cl.mode='RGB-RAW'
         r = self.cl.value(0)

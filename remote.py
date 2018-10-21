@@ -14,6 +14,7 @@ class Remote:
         self.mm = Motor('outC')
         self.touch_sensor_right=TouchSensor('in2')
         self.touch_sensor_left=TouchSensor('in3')
+        self.colorS = ColorStuff()
     def inputLoop(self):
         print("remote start")
         inp = ''
@@ -47,5 +48,6 @@ class Remote:
                 solver.execute2()
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
+            elif inp.take == 
             sleep(0.25)
         print("remote exit")
