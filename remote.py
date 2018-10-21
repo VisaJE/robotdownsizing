@@ -66,7 +66,7 @@ class Remote:
                 Sound.speak('p e r r k e l e').wait
             elif inp == 'follow':
                 stop=input()
-                self.line_follower.start(colorS, stop_color=stop)
+                self.line_follower.start(self.colorS, stop_color=stop)
             elif inp == 'pyori':
                 pp = Pyoriva()
                 pp.run()
