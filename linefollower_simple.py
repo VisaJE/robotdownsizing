@@ -69,8 +69,8 @@ class Linefollower:
                     move_backwards(left_motor, right_motor,distance=5)
                     right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                     sleep(self.run_time/1000)
-                    right_motor.run_timed(time_sp=10*self.run_time, speed_sp=self.speed, stop_action='brake')
-                    left_motor.run_timed(time_sp=10*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
                 else:
                     move_backwards(left_motor, right_motor,distance=5)
             if (len(self.last_darks) > self.buffer_size):
