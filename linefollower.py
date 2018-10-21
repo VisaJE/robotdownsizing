@@ -1,75 +1,113 @@
 from ev3dev.ev3 import *
-from time import sleep
+from time   import sleep
+from functools import reduce
+from turn_robot import *
 
 
-class LineFollower:
+class Linefollower:
+    
+    def __init__(self, cl, left_motor, right_motor, touch_sensor_left, touch_sensor_right):
+        self.on_dark=True
+        self.on_light=False
+        cl.mode='COL-REFLECT'
+        self.last_darks = []
+      
+        self.side_of_line = False # False if right, True if left
+        self.speed = 200
+        self.run_time = 50
+        self.buffer_size = 4
+        self.line_following_on = False
+    
+    def follow_line(self):
+    
+        if (self.line_following_on):
+        
+            self.on_light=cl.value()>=25
+            self.on_dark=cl.value()<25
+            print(cl.value())
+    
+            if (self.on_dark):
+                self.last_darks.append(True)
+            elif (self.on_light):
+                self.last_darks.append(False)
+    
+            turnright = (reduce((lambda x,y: x and y),self.last_darks) and self.side_of_line) or (reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks)) and not self.side_of_line) 
+            turnleft = (reduce((lambda x,y: x and y),self.last_darks) and not self.side_of_line) or (reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks)) and self.side_of_line)
+            
+            moveright = (self.on_dark and self.side_of_line) or (self.on_light and not self.side_of_line)
+            moveleft = (self.on_light and self.side_of_line) or (self.on_dark and not self.side_of_line)
+    
+            if (turnright):
+                move(left_motor, right_motor, touch_sensor_left, touch_sensor_right, distance=7)
+                turn_right(left_motor, right_motor,degrees=60)
+                #turn right
+                #left_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
+                #right_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
+                #left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                #right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                
+            elif (turnleft):
+                right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+            
+            elif(moveright):
+                 left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                 right_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
+            
+            elif(moveleft): 
+                right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                
+                left_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
 
-    def run(self):
-
-        cs = ColorSensor();
-        #us = UltrasonicSensor(); assert us.connected
-
-        cs.mode = 'COL-REFLECT'
-        #us.mode = 'US-DIST-CM'
-
-        lm = LargeMotor('outB')
-        rm = LargeMotor('outA')
-
-        speed = 360/4
-        dt = 500
-        stop_action = "coast"
-
-        Kp = 1
-        Ki = 0
-        Kd = 0
-
-        integral = 0
-        previous_error = 0
-
-        target_value = cs.value()
-
-        while True:
-
-
-           # distance = us.value() // 10
-
-            error = target_value - cs.value()
-            integral += (error * dt)
-            derivative = (error - previous_error) / dt
-
-
-
-            u = (Kp * error) + (Ki * integral) + (Kd * derivative)
-
-            if speed + abs(u) > 1000:
-                if u >= 0:
-                    u = 1000 - speed
+                #print("liiku oikealle")
+    
+            if (touch_sensor_left.is_pressed or touch_sensor_right.is_pressed):
+                print("COLLISION! MOVING BACKWARDS")
+                #Sound.speak('Perkele',espeak_opts='-a 200 -v finnish').wait()
+                move_backwards(left_motor, right_motor,distance=5)
+                if (touch_sensor_right.is_pressed):
+                    move_backwards(left_motor, right_motor,distance=5)
+                    right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                    sleep(self.run_time/1000)
+                    right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
+                    sleep(3*self.run_time/1000)
                 else:
-                    u = speed - 1000
+                    move_backwards(left_motor, right_motor,distance=5)
+            if (len(self.last_darks) > self.buffer_size):
+                self.last_darks.pop(0)
+            #print("kierros")
+            sleep(self.run_time/1000)            
 
-            if u >= 0:
-                lm.run_timed(time_sp=dt, speed_sp=speed + u, stop_action=stop_action)
-                rm.run_timed(time_sp=dt, speed_sp=speed - u, stop_action=stop_action)
-                sleep(dt / 1000)
-            else:
-                lm.run_timed(time_sp=dt, speed_sp=speed - u, stop_action=stop_action)
-                rm.run_timed(time_sp=dt, speed_sp=speed + u, stop_action=stop_action)
-                sleep(dt / 1000)
+def start(self, color_stuff, stop_color='acasc'):
+    self.speed = int(input("SPEED: "))
+    self.run_time = int(input("RUNTIME: "))
+    self.buffer_size = int(input("BUFFERSIZE: "))
+    self.line_following_on=True
+    doing=True
+    try:
+        while(doing):
+            self.follow_line()
+            if color_stuff.getColorFUCK() == stop_color:
+                if color_stuff.getAvrColorFUCK() == stop_color:
+                    doing=False
+    except KeyboardInterrupt:
+        print("Interrupted")
 
-            previous_error = error
 
-    def pause(self, pct=0.0, adj=0.01):
-        while self.btn.right or self.btn.left:
-            ev3.Leds.set_color(ev3.Leds.LEFT, ev3.Leds.AMBER, pct)
-            ev3.Leds.set_color(ev3.Leds.RIGHT, ev3.Leds.AMBER, pct)
-            if (pct + adj) < 0.0 or (pct + adj) > 1.0:
-                adj = adj * -1.0
-            pct = pct + adj
+cl=ColorSensor()
+left_motor=LargeMotor('outB')
+right_motor=LargeMotor('outA')
+touch_sensor_left=TouchSensor('in3')
+touch_sensor_right=TouchSensor('in2')
 
-        print("[Continue]")
-        Leds.set_color(ev3.Leds.LEFT, ev3.Leds.GREEN)
-        Leds.set_color(ev3.Leds.RIGHT, ev3.Leds.GREEN)
+lf = Linefollower(cl, left_motor, right_motor,touch_sensor_left, touch_sensor_right)
+lf.line_following_on = True
 
-if __name__ == "__main__":
-    robot = LineFollower()
-    robot.run()
+
+lf.speed = int(input("SPEED: "))
+lf.run_time = int(input("RUNTIME: "))
+lf.buffer_size = int(input("BUFFERSIZE: "))
+
+while(True):
+    lf.follow_line()
