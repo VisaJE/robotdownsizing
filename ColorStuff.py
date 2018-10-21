@@ -25,7 +25,7 @@ class ColorStuff:
         print(res)
         return (res, self.getDistance(self.knownColors(res), col)) 
 
-def getColorH(self):
+    def getColorH(self):
         oldMode = self.cl.mode
         self.cl.mode='RGB-RAW'
         r = self.cl.value(0)
@@ -43,7 +43,7 @@ def getColorH(self):
         dists = list(dists)
         #print("mita vi" + str(len(dists)))
         #for i in dists:
-        #	print(i)
+        #    print(i)
         return min(dists, key=lambda t: t[1])
 
     def getColor(self, color):
