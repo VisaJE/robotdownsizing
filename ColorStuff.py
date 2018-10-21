@@ -54,7 +54,7 @@ class ColorStuff:
         col = self.getAvrColor()
         if self.getColor(col)[1]:
             return False
-        else knownColors[name] = col
+        else self.knownColors[name] = col
 
     def learnColorRight(self, colors, name):
         trimLeft = colors.copy()
