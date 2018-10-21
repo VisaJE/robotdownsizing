@@ -7,7 +7,7 @@ from turn_robot import *
 class Linefollower:
     
     def __init__(self, cs):
-        self.cl=ColorSensor()
+        self.cl=cs.cl
         self.left_motor=LargeMotor('outB')
         self.right_motor=LargeMotor('outA')
         self.touch_sensor_left=TouchSensor('in3')
