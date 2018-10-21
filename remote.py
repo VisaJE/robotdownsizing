@@ -13,7 +13,7 @@ from turn_robot import *
 
 class Remote:
     def __init__(self, cs):
-    	self.colorS = ColorStuff(cs)
+        self.colorS = ColorStuff(cs)
         self.lm = LargeMotor('outB')
         self.rm = LargeMotor('outA')
         self.mm = Motor('outC')
