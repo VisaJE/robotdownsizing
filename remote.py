@@ -6,15 +6,17 @@ from math import *
 from block_solver import *
 from pylvas import *
 import curses
+from linefollower_simple import LineFollower
+from ColorStuff import ColorStuff
 
 class Remote:
-    def __init__(self):
+    def __init__(self, cs):
         self.lm = LargeMotor('outB')
         self.rm = LargeMotor('outA')
         self.mm = Motor('outC')
         self.touch_sensor_right=TouchSensor('in2')
         self.touch_sensor_left=TouchSensor('in3')
-        self.colorS = ColorStuff()
+        self.cs = cs
     def inputLoop(self):
         print("remote start")
         inp = ''
@@ -48,6 +50,8 @@ class Remote:
                 solver.execute2()
             elif inp == 'perkele':
                 Sound.speak('p e r r k e l e').wait
-            elif inp.take == 
+            elif inp == 'follow'
+            	lf = LineFollower(cs)
+            	lf.lineLoop()
             sleep(0.25)
         print("remote exit")

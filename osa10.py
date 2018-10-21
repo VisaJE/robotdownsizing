@@ -15,7 +15,8 @@ us = UltrasonicSensor()
 us.mode='US-DIST-CM'
 state = 0
 colors = []
-rem = Remote()
+
+rem = Remote(cs)
 rem.inputLoop()
 while True:
 	print("statte " + str(state))
