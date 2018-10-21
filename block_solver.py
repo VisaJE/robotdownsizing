@@ -1,4 +1,4 @@
-from pylvas import * 
+from pylvas import *
 
 class Block_solver:
 
@@ -18,4 +18,6 @@ class Block_solver:
 
     def execute2():
         start=[0,0]
-        return
+        preferred=[[20,-10],[20,-120]]
+        solver2=Pylvas_solver(self.left_motor,self.right_motor,self.touch_sensor_right,self.touch_sensor_left,start,preferred)
+        solver2.execute()
