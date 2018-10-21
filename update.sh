@@ -1,4 +1,4 @@
-cd /home/visakoe1/Downloads/ev3/robotdownsizing
 git pull
-cd /home/visakoe1/Downloads/ev3/
+cd ..
 scp -r robotdownsizing/*py robot@"$1":~/robotdownsizing
+cd robotdownsizing
