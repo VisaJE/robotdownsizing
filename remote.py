@@ -9,6 +9,7 @@ import curses
 from linefollower_simple import Linefollower
 from ColorStuff import ColorStuff
 from solve_pyor import Pyoriva
+from turn_robot import *
 
 class Remote:
     def __init__(self, cs):
@@ -68,8 +69,12 @@ class Remote:
             elif inp == 'pyori':
                 pp = Pyoriva()
                 pp.run()
-            elif inp == 'learn':
-                colorS.learnColor('Learned')
+           elif inp == 'learn':
+                name=input()
+                colorS.learnColor(name)
+            elif inp == 'forward':
+                dist = (int)input()
+                move(lm, rm, touch_sensor_left, touch_sensor_right, dist)
 
             sleep(0.25)
         print("remote exit")
