@@ -6,10 +6,11 @@ from turn_robot import *
 
 class Linefollower:
     
-    def __init__(self, cl, left_motor, right_motor, touch_sensor_left, touch_sensor_right):
-        self.on_dark=True
-        self.on_light=False
+    def __init__(fuck, cl, left_motor, right_motor, touch_sensor_left, touch_sensor_right):
+        fuck.on_dark=True
+        fuck.on_light=False
         cl.mode='COL-REFLECT'
+<<<<<<< HEAD
         self.left_motor = left_motor
         self.right_motor = right_motor
         self.touch_sensor_left = touch_sensor_left
@@ -27,77 +28,97 @@ class Linefollower:
         self.run_time = 50
         self.buffer_size = 4
         self.line_following_on = False
+=======
+        fuck.left_motor = left_motor
+        fuck.right_motor = right_motor
+        fuck.touch_sensor_left = touch_sensor_left
+        fuck.touch_sensor_right = touch_sensor_right
+        fuck.last_darks = []
+        fuck.cl = cl
+        fuck.side_of_line = False # False if right, True if left
+        fuck.speed = 200
+        fuck.run_time = 50
+        fuck.buffer_size = 4
+        fuck.line_following_on = False
+>>>>>>> Automated message, ignore
     
-    def follow_line(self):
+    def follow_line(fuck):
     
-        if (self.line_following_on):
+        if (fuck.line_following_on):
         
-            self.on_light=self.cl.value()>=25
-            self.on_dark=self.cl.value()<25
-            print(self.cl.value())
+            fuck.on_light=fuck.cl.value()>=25
+            fuck.on_dark=fuck.cl.value()<25
+            print(fuck.cl.value())
     
-            if (self.on_dark):
-                self.last_darks.append(True)
-            elif (self.on_light):
-                self.last_darks.append(False)
+            if (fuck.on_dark):
+                fuck.last_darks.append(True)
+            elif (fuck.on_light):
+                fuck.last_darks.append(False)
     
-            turnright = (reduce((lambda x,y: x and y),self.last_darks) and self.side_of_line) or (reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks)) and not self.side_of_line) 
-            turnleft = (reduce((lambda x,y: x and y),self.last_darks) and not self.side_of_line) or (reduce((lambda x,y: x and y), map((lambda x: not x), self.last_darks)) and self.side_of_line)
+            turnright = (reduce((lambda x,y: x and y),fuck.last_darks) and fuck.side_of_line) or (reduce((lambda x,y: x and y), map((lambda x: not x), fuck.last_darks)) and not fuck.side_of_line) 
+            turnleft = (reduce((lambda x,y: x and y),fuck.last_darks) and not fuck.side_of_line) or (reduce((lambda x,y: x and y), map((lambda x: not x), fuck.last_darks)) and fuck.side_of_line)
             
-            moveright = (self.on_dark and self.side_of_line) or (self.on_light and not self.side_of_line)
-            moveleft = (self.on_light and self.side_of_line) or (self.on_dark and not self.side_of_line)
+            moveright = (fuck.on_dark and fuck.side_of_line) or (fuck.on_light and not fuck.side_of_line)
+            moveleft = (fuck.on_light and fuck.side_of_line) or (fuck.on_dark and not fuck.side_of_line)
     
             if (turnright):
-                move(self.left_motor, self.right_motor, self.touch_sensor_left, self.touch_sensor_right, distance=7)
-                turn_right(self.left_motor, self.right_motor,degrees=60)
+                move(fuck.left_motor, fuck.right_motor, fuck.touch_sensor_left, fuck.touch_sensor_right, distance=7)
+                turn_right(fuck.left_motor, fuck.right_motor,degrees=60)
                 #turn right
+<<<<<<< HEAD
                 #self.left_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
                 #self.right_motor.run_timed(time_sp=, speed_sp = -self.speed, stop_action='brake')
                 #self.left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
                 #self.right_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+=======
+                #left_motor.run_timed(time_sp=, speed_sp = -fuck.speed, stop_action='brake')
+                #right_motor.run_timed(time_sp=, speed_sp = -fuck.speed, stop_action='brake')
+                #left_motor.run_timed(time_sp=fuck.run_time, speed_sp=-fuck.speed, stop_action='brake')
+                #right_motor.run_timed(time_sp=fuck.run_time, speed_sp=fuck.speed, stop_action='brake')
+>>>>>>> Automated message, ignore
                 
             elif (turnleft):
-                self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                self.left_motor.run_timed(time_sp=self.run_time, speed_sp=self.speed, stop_action='brake')
+                fuck.right_motor.run_timed(time_sp=fuck.run_time, speed_sp=-fuck.speed, stop_action='brake')
+                fuck.left_motor.run_timed(time_sp=fuck.run_time, speed_sp=fuck.speed, stop_action='brake')
             
             elif(moveright):
-                 self.left_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                 self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
+                 fuck.left_motor.run_timed(time_sp=fuck.run_time, speed_sp=-fuck.speed, stop_action='brake')
+                 fuck.right_motor.run_timed(time_sp=fuck.run_time, speed_sp=-0.3*fuck.speed, stop_action='brake')
             
             elif(moveleft): 
-                self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
+                fuck.right_motor.run_timed(time_sp=fuck.run_time, speed_sp=-fuck.speed, stop_action='brake')
                 
-                self.left_motor.run_timed(time_sp=self.run_time, speed_sp=-0.3*self.speed, stop_action='brake')
+                fuck.left_motor.run_timed(time_sp=fuck.run_time, speed_sp=-0.3*fuck.speed, stop_action='brake')
 
                 #print("liiku oikealle")
     
-            if (self.touch_sensor_left.is_pressed or self.touch_sensor_right.is_pressed):
+            if (fuck.touch_sensor_left.is_pressed or fuck.touch_sensor_right.is_pressed):
                 print("COLLISION! MOVING BACKWARDS")
                 #Sound.speak('Perkele',espeak_opts='-a 200 -v finnish').wait()
-                move_backwards(self.left_motor, self.right_motor,distance=5)
-                if (self.touch_sensor_right.is_pressed):
-                    move_backwards(self.left_motor, self.right_motor,distance=5)
-                    self.right_motor.run_timed(time_sp=self.run_time, speed_sp=-self.speed, stop_action='brake')
-                    sleep(self.run_time/1000)
-                    self.right_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
-                    self.left_motor.run_timed(time_sp=3*self.run_time, speed_sp=self.speed, stop_action='brake')
-                    sleep(3*self.run_time/1000)
+                move_backwards(fuck.left_motor, fuck.right_motor,distance=5)
+                if (fuck.touch_sensor_right.is_pressed):
+                    move_backwards(fuck.left_motor, fuck.right_motor,distance=5)
+                    fuck.right_motor.run_timed(time_sp=fuck.run_time, speed_sp=-fuck.speed, stop_action='brake')
+                    sleep(fuck.run_time/1000)
+                    fuck.right_motor.run_timed(time_sp=3*fuck.run_time, speed_sp=fuck.speed, stop_action='brake')
+                    fuck.left_motor.run_timed(time_sp=3*fuck.run_time, speed_sp=fuck.speed, stop_action='brake')
+                    sleep(3*fuck.run_time/1000)
                 else:
-                    move_backwards(self.left_motor, self.right_motor,distance=5)
-            if (len(self.last_darks) > self.buffer_size):
-                self.last_darks.pop(0)
+                    move_backwards(fuck.left_motor, fuck.right_motor,distance=5)
+            if (len(fuck.last_darks) > fuck.buffer_size):
+                fuck.last_darks.pop(0)
             #print("kierros")
-            sleep(self.run_time/1000)            
+            sleep(fuck.run_time/1000)            
 
-    def start(self, color_stuff, stop_color='acasc'):
-        self.speed = int(input("SPEED: "))
-        self.run_time = int(input("RUNTIME: "))
-        self.buffer_size = int(input("BUFFERSIZE: "))
-        self.line_following_on=True
+    def start(fuck, color_stuff, stop_color='acasc'):
+        fuck.speed = int(input("SPEED: "))
+        fuck.run_time = int(input("RUNTIME: "))
+        fuck.buffer_size = int(input("BUFFERSIZE: "))
+        fuck.line_following_on=True
         doing=True
         try:
             while(doing):
-                self.follow_line()
+                fuck.follow_line()
                 if color_stuff.getColorFUCK() == stop_color:
                     if color_stuff.getAvrColorFUCK() == stop_color:
                         doing=False

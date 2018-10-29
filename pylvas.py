@@ -9,88 +9,88 @@ class Pylvas_solver:
     last_moves=0
     bumped_left=False
     bumped_right=False
-    def __init__(self,left_motor,right_motor,touch_sensor_right,touch_sensor_left,position,preferred):
-        self.preferred=preferred
-        self.position=position
-        self.left_motor=left_motor
-        self.right_motor=right_motor
-        self.touch_sensor_left=touch_sensor_left
-        self.touch_sensor_right=touch_sensor_right
+    def __init__(fuck,left_motor,right_motor,touch_sensor_right,touch_sensor_left,position,preferred):
+        fuck.preferred=preferred
+        fuck.position=position
+        fuck.left_motor=left_motor
+        fuck.right_motor=right_motor
+        fuck.touch_sensor_left=touch_sensor_left
+        fuck.touch_sensor_right=touch_sensor_right
 
-    def execute(self):
+    def execute(fuck):
         try:
-            while self.not_done:
-                while self.step_forward():
+            while fuck.not_done:
+                while fuck.step_forward():
                     pass
-                if self.calculate_distance() > 10:
-                    self.fix_orientation()
+                if fuck.calculate_distance() > 10:
+                    fuck.fix_orientation()
                 else:
-                    self.fix_position()
+                    fuck.fix_position()
             return True
         except KeyboardInterrupt:
            print("Interrupted") 
 
-    def step_forward(self):
-        if(self.stage==len(self.preferred)):
-            self.not_done=False
-        orientation_change=self.find_orientation()
-        self.orientation-=orientation_change
+    def step_forward(fuck):
+        if(fuck.stage==len(fuck.preferred)):
+            fuck.not_done=False
+        orientation_change=fuck.find_orientation()
+        fuck.orientation-=orientation_change
         print("Orientation change: ", orientation_change)
         if orientation_change<0 :
-            turn_left(self.left_motor,self.right_motor,orientation_change)
+            turn_left(fuck.left_motor,fuck.right_motor,orientation_change)
         else:
-            turn_right(self.left_motor,self.right_motor,orientation_change)
-        desired_dist=self.calculate_distance()
-        self.last_moves,bump_l,bump_r=move(self.left_motor,self.right_motor, self.touch_sensor_left, self.touch_sensor_right,desired_dist)
+            turn_right(fuck.left_motor,fuck.right_motor,orientation_change)
+        desired_dist=fuck.calculate_distance()
+        fuck.last_moves,bump_l,bump_r=move(fuck.left_motor,fuck.right_motor, fuck.touch_sensor_left, fuck.touch_sensor_right,desired_dist)
 
-        self.position[0]+=math.cos(self.orientation/360*2*math.pi)*self.last_moves
-        self.position[1]+=math.sin(self.orientation/360*2*math.pi)*self.last_moves
+        fuck.position[0]+=math.cos(fuck.orientation/360*2*math.pi)*fuck.last_moves
+        fuck.position[1]+=math.sin(fuck.orientation/360*2*math.pi)*fuck.last_moves
 
         if bump_l:
-            self.bumped_left=True
+            fuck.bumped_left=True
             #print("bumped left")
             return False
         if bump_r:
-            self.bumped_right=True
+            fuck.bumped_right=True
             #print("bumped right")
             return False
 
-        #self.position=self.preferred[self.stage]
-        self.stage+=1
-        if self.stage == len(self.preferred):
-            self.not_done = False
+        #fuck.position=fuck.preferred[fuck.stage]
+        fuck.stage+=1
+        if fuck.stage == len(fuck.preferred):
+            fuck.not_done = False
         return True
 
-    def fix_orientation(self):
+    def fix_orientation(fuck):
         dist=10
-        move_backwards(self.left_motor,self.right_motor, distance =dist)
+        move_backwards(fuck.left_motor,fuck.right_motor, distance =dist)
         degree = 10
-        if self.bumped_right:
-            turn_left(self.left_motor,self.right_motor,degree)
-            self.orientation-=degree
-        elif self.bumped_left:
-            turn_right(self.left_motor,self.right_motor,degree)
-            self.orientation+=degree
-        self.bumped_left=False
-        self.bumped_right=False
-        self.position[0]-=math.cos(self.orientation/360*2*math.pi)*dist
-        self.position[1]-=math.sin(self.orientation/360*2*math.pi)*dist
-        print("Position: ", self.position)
+        if fuck.bumped_right:
+            turn_left(fuck.left_motor,fuck.right_motor,degree)
+            fuck.orientation-=degree
+        elif fuck.bumped_left:
+            turn_right(fuck.left_motor,fuck.right_motor,degree)
+            fuck.orientation+=degree
+        fuck.bumped_left=False
+        fuck.bumped_right=False
+        fuck.position[0]-=math.cos(fuck.orientation/360*2*math.pi)*dist
+        fuck.position[1]-=math.sin(fuck.orientation/360*2*math.pi)*dist
+        print("Position: ", fuck.position)
         return
 
-    def fix_position(self):
-        self.bumped_left=False
-        self.bumped_right=False
-        self.stage += 1
+    def fix_position(fuck):
+        fuck.bumped_left=False
+        fuck.bumped_right=False
+        fuck.stage += 1
         return
 
-    def find_orientation(self):
-        if self.position[0]-self.preferred[self.stage][0]==0:
+    def find_orientation(fuck):
+        if fuck.position[0]-fuck.preferred[fuck.stage][0]==0:
             tmp_or=math.pi/2
         else:
-            tmp_or=math.atan2(self.preferred[self.stage][1] - self.position[1], self.preferred[self.stage][0] - self.position[0])
-        indegs=self.orientation-tmp_or/2/math.pi*360
+            tmp_or=math.atan2(fuck.preferred[fuck.stage][1] - fuck.position[1], fuck.preferred[fuck.stage][0] - fuck.position[0])
+        indegs=fuck.orientation-tmp_or/2/math.pi*360
         return indegs
 
-    def calculate_distance(self):
-        return math.sqrt(math.pow(self.position[1]-self.preferred[self.stage][1],2)+math.pow(self.position[0]-self.preferred[self.stage][0],2))
+    def calculate_distance(fuck):
+        return math.sqrt(math.pow(fuck.position[1]-fuck.preferred[fuck.stage][1],2)+math.pow(fuck.position[0]-fuck.preferred[fuck.stage][0],2))
